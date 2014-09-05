@@ -1,0 +1,35 @@
+# Dependencies
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+highlighter: pygments
+
+# Permalinks
+permalink:	/:title
+
+# SASS output
+sass:
+    style: :compressed
+
+# Setup
+title:		Registr smluv
+tagline:	'blog'
+description:	"Registr smluv České pirátské strany"
+url:		http://smlouvy.pirati.cz
+
+author:
+  name:		'Jakub Michálek'
+  url:		https://www.pirati.cz/lide/jakub_michalek
+
+paginate:	5
+
+# Custom vars
+icon:		/assets/images/favicon.ico
+favicon:		/assets/images/icon.png
+# cover:		/assets/images/cover.jpg
+# preview:    /assets/images/preview.jpg
+
+social:
+  - icon:	feed
+    url:	http://smlouvy.pirati.cz/atom.xml
+    desc:	Odběr aktualit
