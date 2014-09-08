@@ -31,6 +31,8 @@
 trvale bytem {{ smluvnik.["bydliště"] }}
 {% elsif smluvnik.["místo podnikání"] %}<br/>
 místo podnikání {{ smluvnik.["místo podnikání"] }}
+{% elsif smluvnik.["sídlo"] %}<br/>
+se sídlem {{ smluvnik.["sídlo"] }}
 {% endif %}
 
 {% if smluvnik.["zástupce"] %}<br/>
@@ -56,10 +58,7 @@ za smluvní stranu podepsal {{ smluvnik.["zástupce"] }}{% if smluvnik.["funkce"
   <td>
 
 {% for soubor in page.["soubory"] %}
-<div style="width:110px;">
-<strong>{{ soubor.["název"] }}</strong>
-
-{% if soubor.["náhled"] %} <img src="{{ soubor.["náhled"] }}" class="miniatura"/> {% endif %}
+<div style="width:120px;float:left;margin-right:10px">
 
 <div class="btn-group">
   <a class="btn btn-success" href="{% if soubor.["strojově čitelná verze"] %}{{ soubor.["strojově čitelná verze"] }}{% elsif soubor.["podepsaná verze"] %}{{ soubor.["podepsaná verze"] }}{% elsif soubor.["upravitelná verze"] %}{{ soubor.["upravitelná verze"] }}{% endif %}">Stáhnout</a>
@@ -81,6 +80,13 @@ za smluvní stranu podepsal {{ smluvnik.["zástupce"] }}{% if smluvnik.["funkce"
     <li><a href="{{ soubor.["upravitelná verze"] }}">Upravitelná verze</a></li>
 {% endif %}
   </ul>
+</div>
+
+{% if soubor.["náhled"] %} <img src="{{ soubor.["náhled"] }}" class="miniatura"/> {% endif %}
+
+<strong>{{ soubor.["název"] }}</strong>
+
+
 </div>
 
 {% endfor %}
