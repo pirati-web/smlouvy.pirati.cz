@@ -7,9 +7,9 @@
 
 <div class="page-section">
 <div class="container">
-<h1>{{ page.["title"] | capitalize }}</h1>
+<h1 class="contract-header">{{ page.["title"]}}</h1>
 
-<table class="table table-striped">
+    <table class="table table-striped">
 <tr>
   <th><span class="glyphicon glyphicon-pencil"></span> Datum podpisu</th>
   <td>{{page.["datum podpisu"] | date: "%-d. %-m. %Y" }}</td>

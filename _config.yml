@@ -21,8 +21,6 @@ author:
   name:		'Jakub Michálek'
   url:		https://www.pirati.cz/lide/jakub_michalek
 
-paginate:	5
-
 # Custom vars
 icon:		/assets/images/favicon.ico
 favicon:		/assets/images/icon.png

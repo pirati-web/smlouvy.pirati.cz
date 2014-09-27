@@ -3,30 +3,80 @@ layout: default
 title: Registr smluv
 ---
 
-{% assign sorted_pages = (site.pages | where: "layout", "contract" | sort: 'datum podpisu' ) %}
+{% assign sorted_pages = (site.pages | where: "layout", "contract" ) %}
 
-<table class="table table-striped">
-<tr>
-  <th>Den podpisu</th>
-  <th>Název</th>
-  <th>Další smluvní strany</th>
-  <th>Předmět plnění</th>
-  <th class="text-right">Odhad nákladů</th>
-  <th>Stav</th>
-</tr>
+{% comment %} in losses
+<form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" />
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
 
-<tbody>
-{% for page in sorted_pages reversed %}
-<tr{% if page.["stav"] contains 'splněn' %} class="success"{% elsif page.["stav"] contains 'odstoup' or page.["stav"] contains 'vypově' or page.["stav"] contains 'výpově' %} class="danger"{% endif %}>
-  <td>{{page.["datum podpisu"] | date: "%-d. %-m. %Y" }}</td>
-  <td><a href="{{ page.url }}">{{page.["title"]}}</a></td>
-  <td>{% for smluvnik in page.["smluvní strany"] offset:1 %} {% if forloop.index != 1 %}<br/>{% endif %} {{ smluvnik.["jméno"] }} {% endfor %}</td>
-  <td>{{page.["předmět"]}}</td>
-  <td class="text-right">{{page.["náklady"]}} Kč</td>
-  <td>{{page.["stav"]}}</td>
-</tr>
-{% endfor %}
-</tbody>
+Search <button type="button" data-filter-column="5" data-filter-text="2?%">2?%</button> in the Discount column<br>
+<button type="button" class="reset">Reset</button> <!-- targeted by the "filter_reset" option -->
+{% endcomment %}
+
+<table class="table table-striped" id="contracts-table" role="grid">
+    <thead>
+        <tr>
+          <th>Den podpisu</th>
+          <th>Název</th>
+          <th>Další smluvní strany</th>
+          <th>Předmět plnění</th>
+          <th class="text-right">Odhad nákladů</th>
+          <th>Stav</th>
+        </tr>
+        <tr>
+            <th class="filter-match"></th>
+            <th class="filter-match"></th>
+            <th class="filter-match"></th>
+            <th class="filter-match"></th>
+            <th class="filter-match"></th>
+            <th class="filter-match"></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Den podpisu</th>
+            <th>Název</th>
+            <th>Další smluvní strany</th>
+            <th>Předmět plnění</th>
+            <th class="text-right">Odhad nákladů</th>
+            <th>Stav</th>
+        </tr>
+        <tr class="hidden-print">
+           <td colspan="6">
+               <div id="pager" class="pager">
+                   <form>
+                       <img src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.17.8/addons/pager/icons/first.png" class="first"/>
+                       <img src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.17.8/addons/pager/icons/prev.png" class="prev"/>
+                       <input type="text" class="form-inline pagedisplay"/>
+                       <img src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.17.8/addons/pager/icons/next.png" class="next"/>
+                       <img src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.17.8/addons/pager/icons/last.png" class="last"/>
+                       <select class="pagesize">
+                           <option selected="selected"  value="10">10</option>
+                           <option value="2">2</option>
+                           <option value="20">20</option>
+                           <option value="30">30</option>
+                           <option  value="40">40</option>
+                       </select>
+                   </form>
+               </div>
+           </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    {% for page in sorted_pages reversed %}
+    <tr{% if page.["stav"] contains 'splněn' %} class="success"{% elsif page.["stav"] contains 'odstoup' or page.["stav"] contains 'vypově' or page.["stav"] contains 'výpově' %} class="danger"{% endif %} role="row">
+      <td>{{page.["datum podpisu"] }}</td>
+      <td><a href="{{ page.url }}">{{page.["title"]}}</a></td>
+      <td>{% for smluvnik in page.["smluvní strany"] offset:1 %} {% if forloop.index != 1 %}<br/>{% endif %} {{ smluvnik.["jméno"] }} {% endfor %}</td>
+      <td>{{page.["předmět"]}}</td>
+      <td class="text-right">{{page.["náklady"]}} Kč</td>
+      <td>{{page.["stav"]}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
 </table>
 
-</div>
