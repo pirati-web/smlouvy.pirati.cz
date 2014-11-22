@@ -19,9 +19,10 @@ var convertDate = function(date) {
  */
 var createBasePath = function(date) {
 	var splited = date.split('-');
-	var year = splited[0].substring(2,4);
+	var year = splited[0];
+	var month = splited[1];
 	var day =  splited[2];
-	return 'smlouvy/' + year + '/' + day + '/';
+	return 'smlouvy/' + year + '/' month + '/' + day + '/';
 }
 
 /**

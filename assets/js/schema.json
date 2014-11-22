@@ -56,7 +56,11 @@
 		},
 		"token": {
 			"title": "Github access token",
-			"type": "string"
+			"description": "Token vám musí vygenerovat správce repozitáře.",
+			"type": "string",
+			"required": true,
+			"minLength": 40,
+			"maxLength": 42
 		},
 		"docs": {
 			"title": "Dokumenty",
