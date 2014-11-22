@@ -35,3 +35,6 @@ social:
 github:
   user: pirati-cz
   repo: smlouvy
+
+text:
+  upload: '<p>Tato stránka slouží k zjednodušení nahrávání do registru. Pokud máte přístupový klíč (token) pro daný repozitář, tak můžete uploadovat smlouvu a její metadata.</p> <p>V současnosti umí nahrát pouze jeden binární soubor (podepsanou verzi). Skript není zatím příliš otestovaný, chyby hlašte na <a href="https://github.com/pirati-cz/smlouvy/issues">githubu issues</a>.</p>'
