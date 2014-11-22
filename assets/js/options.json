@@ -1,0 +1,19 @@
+{
+	"renderForm": true,
+	"form": {
+		"attributes": {},
+		"buttons": {
+			"submit": {}
+		}
+	},
+	"fields": {
+		"name": {
+			"hideInitValidationError": true
+		},
+		"docs": {
+			"type": "file",
+			"styled": true,
+			"id": "files-id"
+		}
+	}
+}

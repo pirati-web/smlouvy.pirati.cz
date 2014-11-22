@@ -14,7 +14,7 @@ sass:
 # Setup
 title:		Registr smluv
 tagline:	'blog'
-description:	"Registr smluv České pirátské strany"
+description: 'Registr smluv České pirátské strany'
 url:		http://smlouvy.pirati.cz
 
 author:
@@ -31,3 +31,7 @@ social:
   - icon:	feed
     url:	http://smlouvy.pirati.cz/atom.xml
     desc:	Odběr aktualit
+
+github:
+  user: pirati-cz
+  repo: smlouvy
