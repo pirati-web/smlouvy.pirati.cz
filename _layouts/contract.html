@@ -18,6 +18,10 @@
   <th><span class="glyphicon glyphicon-time"></span> Datum účinnosti</th>
   <td>{{page.["datum účinnosti"] | date: "%-d. %-m. %Y" }}</td>
 </tr>
+<tr>
+  <th><span class="glyphicon glyphicon-record"></span> Datum ukončení</th>
+  <td>{{page.["datum ukončení"] | date: "%-d. %-m. %Y" }}</td>
+</tr>
 
 <tr>
   <th><span class="glyphicon glyphicon-user"></span> Smluvní strany</th>
@@ -40,6 +44,10 @@ za smluvní stranu podepsal {{ smluvnik.["zástupce"] }}{% if smluvnik.["funkce"
       {% endfor %}  
     </ol>
   </td>
+</tr>
+<tr>
+  <th><span class="glyphicon glyphicon-globe"></span> Popis</th>
+  <td>{{page.["předmět"] | date: "%-d. %-m. %Y" }}</td>
 </tr>
 <tr{% if page.["stav"] contains 'splněn' %} class="success"{% elsif page.["stav"] contains 'odstoup' or page.["stav"] contains 'vypově' or page.["stav"] contains 'výpově' %} class="danger"{% endif %}>
   <th><span class="glyphicon glyphicon-unchecked"></span> Stav</th>
