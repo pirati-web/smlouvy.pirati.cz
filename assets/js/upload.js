@@ -57,7 +57,7 @@ var sendToGithub = function(basePath, token, files, message) {
 
 	_.each(files, function(val, key) {
 		files[basePath + key] = val;
-		delete files.key;
+		delete files[key];
 	}, this);
 
 	branch.writeMany(files, message).then(function(res) {
