@@ -22,7 +22,7 @@ var createBasePath = function(date) {
 	var year = splited[0];
 	var month = splited[1];
 	var day =  splited[2];
-	return 'smlouvy/' + year + '/' month + '/' + day + '/';
+	return 'smlouvy/' + year + '/' + month + '/' + day + '/';
 }
 
 /**
