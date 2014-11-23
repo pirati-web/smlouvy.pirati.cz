@@ -77,8 +77,9 @@ var sendToGithub = function(basePath, token, files, message) {
  * @param {string} basePath
  * @param {callback}
  * @param {string} token
+ * @param {string} name
  */
-var readFilesAndCall = function(elId, files, basePath, callback, token, message) {
+var readFilesAndCall = function(elId, files, basePath, callback, token, message, name) {
 	var el = document.getElementById(elId);
 	var reader = new FileReader();
 	var count = (el.files.length || 0);
@@ -89,7 +90,7 @@ var readFilesAndCall = function(elId, files, basePath, callback, token, message)
 		reader.onloadend = function(evt) {
 			if (evt.target.readyState == FileReader.DONE) {
 				var fileContent =  evt.target.result.substring('data:application/octet-stream;base64,'.length);
-				files[ 'img.png' ] = {
+				files[ name ] = {
 					isBase64: true,
 					content: fileContent
 				};
@@ -122,9 +123,9 @@ var handleData = function(e, control) {
 	'\n"datum účinnosti": ' +
 	convertDate(values.effective) +
 	'\n"title": "' +
-	values.heading + '"'
+	values.heading + '"' +
 	'\n"předmět": "' +
-	values.subject + '"'
+	values.subject + '"' +
 	'\n"stav": ' +
 	values.status +
 	'\n"náklady": ' +
@@ -137,22 +138,22 @@ var handleData = function(e, control) {
 
 	for(var i = 0; i < values.parties.length; i++) {
 		var party = values.parties[i];
-		text += "\n-\n";
-		text += ' "jméno": "' + party.name + '"\n';
-		text += ' "orgán": ' + party.organization + '\n';
-		text += ' "zástupce": ' + party.agent + '\n';
-		text += ' "funkce": ' + party.function + '\n';
-		text += ' "role": ' + party.role + '\n';
-		text += ' "sign": ' + party.sign + '\n';
+		text += "\n -\n";
+		text += '  "jméno": "' + party.name + '"\n';
+		text += '  "orgán": ' + party.organization + '\n';
+		text += '  "zástupce": ' + party.agent + '\n';
+		text += '  "funkce": ' + party.function + '\n';
+		text += '  "role": ' + party.role + '\n';
+		text += '  "sign": ' + party.sign + '\n';
 	}
 	text += '"soubory":\n';
-	text += '-\n ' + '"podepsaná verze": ' + values.docs + '\n';
+	text += ' -\n  "podepsaná verze": ' + values.docs + '\n';
 	text += '---';
 
 	var basePath = createBasePath(convertDate(values.sign));
 	var message = 'Nahrání smlouvy ' + values.name + ' ze dne ' +  values.sign;
 
-	readFilesAndCall('files-id', {'index.html': text}, basePath, sendToGithub, token, message);
+	readFilesAndCall('files-id', {'index.html': text}, basePath, sendToGithub, token, message, values.docs);
 };
 
 /**
