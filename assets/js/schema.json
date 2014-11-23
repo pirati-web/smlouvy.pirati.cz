@@ -32,6 +32,7 @@
 			"title": "Náklady",
 			"type": "number",
 			"description": "Odhadovaná výše nákladů",
+			"minimum": 0,
 			"required": true,
 			"default": 0
 		},

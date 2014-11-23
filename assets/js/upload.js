@@ -117,6 +117,11 @@ var readFilesAndCall = function(elId, files, basePath, callback, token, message,
 var handleData = function(e, control) {
 	var values = control.getValue();
 	var token = values.token;
+
+	if(_.isUndefined(values.costs)) {
+		values.costs = 0;
+	}
+
 	var text = '---\n"layout": contract' +
 	'\n"datum podpisu": ' +
 	convertDate(values.sign) +
