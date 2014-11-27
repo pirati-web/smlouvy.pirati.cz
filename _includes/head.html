@@ -14,8 +14,8 @@
 {% else %}
 	<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-	<meta name="description" content="{{ page.content | strip_html | truncatewords: 20 }}" />
-	<meta property="og:description" content="{{ page.content | strip_html | truncatewords: 20 }}" />
+	<meta name="description" content="{{ site.description }}" />
+	<meta property="og:description" content="{{ site.description }}" />
 	<meta property="og:title" content="{{ page.title }}" />
 	<meta property="og:type" content="article" />
 	<meta property="og:site_name" content="{{ site.title }}" />
