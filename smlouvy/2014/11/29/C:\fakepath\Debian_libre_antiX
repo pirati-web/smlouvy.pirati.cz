@@ -1,0 +1,21 @@
+Debian Testing and enriched with its own set of applications to help
+new users and linux old-timers get set up quickly and easily to an aesthetically pleasing 'desktop'.
+
+antiX-core is 100% Debian 'free' (according to the vrms application) and uses a modified gnu-kernel.
+antiX-base and antiX-full both come with firmware and a few applications from the contrib and/or non-free
+Debian repositories.
+To make antiX-full and/or antiX-base Debian 'free', just follow the simple steps below.
+
+1. Comment out the contrib and non-free references from the Debian repository.
+2. Use the vrms application to show what 'non-free' packages to uninstall.
+   Simply type vrms in a terminal.
+3. apt-get purge firmware* should be enough to remove non-free applications.
+3. apt-get purge conky-all (it should be replaced by conky-std) libxnvctrl0 flash* b43* should be enough to remove
+   contrib applications.
+4. apt-get update && apt-get dist-upgrade
+5. Install the antiX gnu kernel
+
+Should I remove the antiX apps?
+
+Not really recommended (the apps are free), but it may be better to just remove the ones you 
+don't need.
