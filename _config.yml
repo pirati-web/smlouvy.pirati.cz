@@ -14,12 +14,14 @@ sass:
 # Setup
 title:		Registr smluv
 tagline:	'blog'
-description:	"Registr smluv České pirátské strany"
+description: 'Registr smluv České pirátské strany'
 url:		http://smlouvy.pirati.cz
 
 author:
-  name:		'Jakub Michálek'
-  url:		https://www.pirati.cz/lide/jakub_michalek
+  - name:		'Jakub Michálek'
+    url:		https://www.pirati.cz/lide/jakub_michalek
+  - name:   'Ondřej Profant'
+    url:    https://www.pirati.cz/lide/ondrej_profant
 
 # Custom vars
 icon:		/assets/images/favicon.ico
@@ -31,3 +33,10 @@ social:
   - icon:	feed
     url:	http://smlouvy.pirati.cz/atom.xml
     desc:	Odběr aktualit
+
+github:
+  user: pirati-cz
+  repo: smlouvy
+
+text:
+  upload: '<p>Tato stránka slouží k zjednodušení nahrávání do registru. Pokud máte přístupový klíč (token) pro daný repozitář, tak můžete uploadovat smlouvu a její metadata.</p> <p>V současnosti umí nahrát pouze jeden binární soubor (podepsanou verzi). Skript není zatím příliš otestovaný, chyby hlašte v <a href="https://github.com/pirati-cz/smlouvy/issues">githubu issues</a>.</p>'
