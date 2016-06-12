@@ -49,7 +49,7 @@ za smluvní stranu podepsal {{ smluvnik.["zástupce"] }}{% if smluvnik.["funkce"
   <th><span class="glyphicon glyphicon-globe"></span> Popis</th>
   <td>{{page.["předmět"] | date: "%-d. %-m. %Y" }}</td>
 </tr>
-<tr{% if page.["stav"] contains 'splněn' or page.["stav"] contains 'ukon' %} class="success"{% elsif page.["stav"] contains 'odstoup' or page.["stav"] contains 'vypově' or page.["stav"] contains 'výpově' %} class="danger"{% endif %}>
+<tr{% if page.["stav"] contains 'splněn' or page.["stav"] contains 'ukon' %} class="success"{% elsif page.["stav"] contains 'odstoup' or page.["stav"] contains 'vypově' or page.["stav"] contains 'výpově' %} class="danger"{% elsif page.["stav"] contains 'nezahájen' or page.["stav"] contains 'nezahajen' %} class=warning{% endif %}>
   <th><span class="glyphicon glyphicon-unchecked"></span> Stav</th>
   <td>{{page.["stav"] }}</td>
 </tr>
