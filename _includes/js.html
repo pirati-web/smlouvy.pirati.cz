@@ -1,0 +1,11 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
+{% comment %}DataTables je potřeba customizovat pro konkrétní Jquery a Foundation{% endcomment %}
+<script type="text/javascript" src="https://cdn.datatables.net/v/zf/jq-2.2.3/dt-1.10.12/datatables.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#smlouvy').DataTable({
+      "order": [[ 0, "asc" ]]
+    });
+});
+</script>

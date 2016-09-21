@@ -1,0 +1,47 @@
+<aside class="o-section o-section--smaller c-header-bar u-inverted u-inverted--darker u-center-860-down">
+  <div class="row">
+    <div class="o-section-inner">
+      <div class="small-12 columns">
+        <ul class="c-header-bar-items">
+          <li class="c-header-bar__item c-header-bar__item--smallerSpace">
+            <a href="https://www.facebook.com/ceska.piratska.strana/" rel="noopener noreferrer" target="_blank" title="Facebook - Česká pirátská strana">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a></li>
+          <li class="c-header-bar__item c-header-bar__item--smallerSpace">
+            <a href="https://twitter.com/PiratePartyCZ" rel="noopener noreferrer" target="_blank" title="Twitter - Česká pirátská strana">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="c-header-bar__item c-header-bar__item--smallerSpace">
+            <a href="https://plus.google.com/u/0/+piratskastrana" rel="noopener noreferrer" target="_blank" title="Google Plus - Česká pirátská strana">
+              <i class="fa fa-google-plus" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="c-header-bar-divider"></div>
+        <ul class="c-header-bar-items c-header-bar-items--bigLh">
+        {% for item in site.data.top-menu %}
+          <li class="c-header-bar__item">
+            <a href="{{ item.url }}" rel="noopener noreferrer" target="_blank">
+              <i class="{{ item.icon }}" aria-hidden="true"></i>
+              <span class="c-header-bar__itemDescription">{{ item.link }}</span>
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</aside>
+<div class="c-top-bar">
+  <div class="row">
+    <div class="c-top-bar-inner u-cf">
+      <div class="top-bar-title">
+        <a href="{{ site.baseurl }}">
+          <img src="{{ '/assets/img/logo.svg' | prepend: site.baseurl }}" alt="Česká pirátská strana">
+        </a>
+      </div>
+      <h1>Registr smluv Pirátské strany</h1>
+    </div>
+  </div>
+</div>

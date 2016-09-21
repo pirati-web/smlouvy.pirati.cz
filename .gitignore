@@ -1,7 +1,6 @@
 .idea
+.sass-cache
 _site
 
 *~
 *.tmp
-
-assets/css/custom.css
