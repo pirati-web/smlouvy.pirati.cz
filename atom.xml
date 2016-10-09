@@ -21,9 +21,9 @@ layout: null
  <entry>
    <title>{{ page.title }}</title>
    <link href="{{ site.url }}{{ page.url }}"/>
-   <updated>{{ page.["datum podpisu"] }}</updated>
+   <updated>{{ page["datum podpisu"] }}</updated>
    <id>{{ site.url }}{{ page.url }}</id>
-   <summary>{{ page.["title"]}} Uzavřeno: {{ page.["datum podpisu"] }}, Odhad nákladů: {{page.["náklady"]}} Kč</summary>
+   <summary>{{ page["title"]}} Uzavřeno: {{ page["datum podpisu"] }}, Odhad nákladů: {{page["náklady"]}} Kč</summary>
    <content type="html">{{ page.content | xml_escape }}</content>
  </entry>
  {% endfor %}

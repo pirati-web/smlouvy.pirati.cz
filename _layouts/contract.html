@@ -4,7 +4,7 @@ layout: default
 
 <div class="row">
 
-  <h2>{{ page.["title"]}}</h2>
+  <h2>{{ page["title"]}}</h2>
 
   <table class="table table-striped hover">
     <thead>
@@ -16,89 +16,89 @@ layout: default
     <tbody>
       <tr>
         <th><i class="fa fa-pencil" aria-hidden="true"></i> Datum podpisu</th>
-        <td>{{page.["datum podpisu"] | date: "%-d. %-m. %Y" }}</td>
+        <td>{{page["datum podpisu"] | date: "%-d. %-m. %Y" }}</td>
       </tr>
       <tr>
         <th><i class="fa fa-clock-o" aria-hidden="true"></i> Datum účinnosti</th>
-        <td>{{page.["datum účinnosti"] | date: "%-d. %-m. %Y" }}</td>
+        <td>{{page["datum účinnosti"] | date: "%-d. %-m. %Y" }}</td>
       </tr>
       <tr>
         <th><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Datum ukončení</th>
-        <td>{{page.["datum ukončení"] | date: "%-d. %-m. %Y" }}</td>
+        <td>{{page["datum ukončení"] | date: "%-d. %-m. %Y" }}</td>
       </tr>
 
       <tr>
         <th><i class="fa fa-user" aria-hidden="true"></i> Smluvní strany</th>
         <td>
           <ol>
-            {% for smluvnik in page.["smluvní strany"]%}
-              <li>{% if smluvnik.["role"] %}<strong>{{ smluvnik.["role"] | capitalize }}</strong>: <br/ >{% endif %}
-              {{ smluvnik.["jméno"] }}{% if smluvnik.["IČ"] %}, IČ {{ smluvnik.["IČ"] }}{% elsif smluvnik.["narozen"] %}, nar. {{ smluvnik.["narozen"]  | date: "%-d. %-m. %Y" }}{% endif %}{% if smluvnik.["orgán"] %}, {{ smluvnik.["orgán"] }}{% endif %}
+            {% for smluvnik in page["smluvní strany"]%}
+              <li>{% if smluvnik["role"] %}<strong>{{ smluvnik["role"] | capitalize }}</strong>: <br/ >{% endif %}
+              {{ smluvnik["jméno"] }}{% if smluvnik["IČ"] %}, IČ {{ smluvnik["IČ"] }}{% elsif smluvnik["narozen"] %}, nar. {{ smluvnik["narozen"]  | date: "%-d. %-m. %Y" }}{% endif %}{% if smluvnik["orgán"] %}, {{ smluvnik["orgán"] }}{% endif %}
 
-      {% if smluvnik.["bydliště"] %}<br/>
-      trvale bytem {{ smluvnik.["bydliště"] }}
-      {% elsif smluvnik.["místo podnikání"] %}<br/>
-      místo podnikání {{ smluvnik.["místo podnikání"] }}
-      {% elsif smluvnik.["sídlo"] %}<br/>
-      se sídlem {{ smluvnik.["sídlo"] }}
+      {% if smluvnik["bydliště"] %}<br/>
+      trvale bytem {{ smluvnik["bydliště"] }}
+      {% elsif smluvnik["místo podnikání"] %}<br/>
+      místo podnikání {{ smluvnik["místo podnikání"] }}
+      {% elsif smluvnik["sídlo"] %}<br/>
+      se sídlem {{ smluvnik["sídlo"] }}
       {% endif %}
 
-      {% if smluvnik.["zástupce"] %}<br/>
-      za smluvní stranu podepsal {{ smluvnik.["zástupce"] }}{% if smluvnik.["funkce"] %}, {{smluvnik.["funkce"] }}{% endif %}{% endif %}</li>
+      {% if smluvnik["zástupce"] %}<br/>
+      za smluvní stranu podepsal {{ smluvnik["zástupce"] }}{% if smluvnik["funkce"] %}, {{smluvnik["funkce"] }}{% endif %}{% endif %}</li>
             {% endfor %}
           </ol>
         </td>
       </tr>
       <tr>
         <th><i class="fa fa-globe" aria-hidden="true"></i> Popis</th>
-        <td>{{page.["předmět"] | date: "%-d. %-m. %Y" }}</td>
+        <td>{{page["předmět"] | date: "%-d. %-m. %Y" }}</td>
       </tr>
-      <tr{% if page.["stav"] contains 'splněn' or page.["stav"] contains 'ukon' %} class="success"{% elsif page.["stav"] contains 'odstoup' or page.["stav"] contains 'vypově' or page.["stav"] contains 'výpově' %} class="danger"{% elsif page.["stav"] contains 'nezahájen' or page.["stav"] contains 'nezahajen' %} class="warning"{% endif %}>
+      <tr{% if page["stav"] contains 'splněn' or page["stav"] contains 'ukon' %} class="success"{% elsif page["stav"] contains 'odstoup' or page["stav"] contains 'vypově' or page["stav"] contains 'výpově' %} class="danger"{% elsif page["stav"] contains 'nezahájen' or page["stav"] contains 'nezahajen' %} class="warning"{% endif %}>
         <th><i class="fa fa-square-o" aria-hidden="true"></i> Stav</th>
-        <td>{{page.["stav"] }}</td>
+        <td>{{page["stav"] }}</td>
       </tr>
       <tr>
         <th><i class="fa fa-credit-card" aria-hidden="true"></i> Náklady</th>
         <td>{% comment %}
-          {{page.["náklady"] }} Kč {% if page.["náklady"] > 50000 %}(záměr s celkovými náklady nad 50000 Kč podléhá předchozímu souhlasu příslušného schvalujícího orgánu) {% elsif page.["náklady"] > 5000 %} (záměr s celkovými náklady podléhá předchozímu souhlasu příslušného předsednictva) {% endif %}
+          {{page["náklady"] }} Kč {% if page["náklady"] > 50000 %}(záměr s celkovými náklady nad 50000 Kč podléhá předchozímu souhlasu příslušného schvalujícího orgánu) {% elsif page["náklady"] > 5000 %} (záměr s celkovými náklady podléhá předchozímu souhlasu příslušného předsednictva) {% endif %}
         {% endcomment %}</td>
       </tr>
       <tr>
         <th><i class="fa fa-inbox" aria-hidden="true"></i> Archivační údaje</th>
-        <td>spisová značka {{page.["smluvní strany"].[0].["značka"] }}{% if page.["místo uložení"] %}<br/ >smlouva uložena na místě: {{ page.["místo uložení"] }} {% endif %}</td>
+        <td>spisová značka {{page["smluvní strany"][0]["značka"] }}{% if page["místo uložení"] %}<br/ >smlouva uložena na místě: {{ page["místo uložení"] }} {% endif %}</td>
       </tr>
       <tr>
         <th><i class="fa fa-file" aria-hidden="true"></i> Soubory</th>
         <td>
 
-      {% for soubor in page.["soubory"] %}
+      {% for soubor in page["soubory"] %}
       <div style="width:120px;float:left;margin-right:10px">
 
       <div class="btn-group">
-        <a class="btn btn-success" href="{% if soubor.["strojově čitelná verze"] %}{{ soubor.["strojově čitelná verze"] }}{% elsif soubor.["podepsaná verze"] %}{{ soubor.["podepsaná verze"] }}{% elsif soubor.["upravitelná verze"] %}{{ soubor.["upravitelná verze"] }}{% endif %}">Stáhnout</a>
+        <a class="btn btn-success" href="{% if soubor["strojově čitelná verze"] %}{{ soubor["strojově čitelná verze"] }}{% elsif soubor["podepsaná verze"] %}{{ soubor["podepsaná verze"] }}{% elsif soubor["upravitelná verze"] %}{{ soubor["upravitelná verze"] }}{% endif %}">Stáhnout</a>
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
           <span class="sr-only">Otevřít nabídku</span>
         </button>
         <ul class="dropdown-menu" role="menu">
 
-      {% if soubor.["strojově čitelná verze"] %}
-          <li><a href="{{ soubor.["strojově čitelná verze"] }}">Strojově čitelná verze</a></li>
+      {% if soubor["strojově čitelná verze"] %}
+          <li><a href="{{ soubor["strojově čitelná verze"] }}">Strojově čitelná verze</a></li>
       {% endif%}
 
-      {% if soubor.["podepsaná verze"] %}
-          <li><a href="{{ soubor.["podepsaná verze"] }}">Podepsaná verze</a></li>
+      {% if soubor["podepsaná verze"] %}
+          <li><a href="{{ soubor["podepsaná verze"] }}">Podepsaná verze</a></li>
       {% endif %}
 
-      {% if soubor.["upravitelná verze"] %}
-          <li><a href="{{ soubor.["upravitelná verze"] }}">Upravitelná verze</a></li>
+      {% if soubor["upravitelná verze"] %}
+          <li><a href="{{ soubor["upravitelná verze"] }}">Upravitelná verze</a></li>
       {% endif %}
         </ul>
       </div>
 
-      {% if soubor.["náhled"] %} <img src="{{ soubor.["náhled"] }}" class="miniatura"/> {% endif %}
+      {% if soubor["náhled"] %} <img src="{{ soubor["náhled"] }}" class="miniatura"/> {% endif %}
 
-      <strong>{{ soubor.["název"] }}</strong>
+      <strong>{{ soubor["název"] }}</strong>
 
 
       </div>
@@ -109,16 +109,16 @@ layout: default
       </tr>
 
 
-      {% if page.["odkazy"] %}
+      {% if page["odkazy"] %}
       <tr>
         <th><span class="glyphicon glyphicon-link"></span> Odkazy</th>
         <td>
-      {% if page.["odkazy"].size == 1 %}
-      <a href="{{ page.["odkazy"].[0].["adresa"] }}">{{ page.["odkazy"].[0].["název"] }}</a>
+      {% if page["odkazy"].size == 1 %}
+      <a href="{{ page["odkazy"][0]["adresa"] }}">{{ page["odkazy"][0]["název"] }}</a>
       {% else %}
         <ol>
-      {% for odkaz in page.["odkazy"] %}
-      <li><a href="{{ odkaz.["adresa"] }}">{{ odkaz.["název"] }}</a></li>
+      {% for odkaz in page["odkazy"] %}
+      <li><a href="{{ odkaz["adresa"] }}">{{ odkaz["název"] }}</a></li>
       {% endfor %}
       </ol>
       {% endif %}
