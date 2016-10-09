@@ -4,8 +4,29 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/zf/jq-2.2.3/dt-1.10.12/datatables.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#smlouvy').DataTable({
-      "order": [[ 0, "desc" ]]
+    /* Setup - add a text input to each footer cell */
+    $('#smlouvy tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    } );
+
+    /* DataTable init */
+    var table = $('#smlouvy').DataTable({
+      "order": [[ 0, "desc" ]],
+      "pageLength": 25
+    });
+
+    /* Apply the search */
+    table.columns().every( function () {
+      var that = this;
+
+      $( 'input', this.footer() ).on( 'keyup change', function () {
+          if ( that.search() !== this.value ) {
+              that
+                  .search( this.value )
+                  .draw();
+          }
+      });
     });
 });
 </script>
