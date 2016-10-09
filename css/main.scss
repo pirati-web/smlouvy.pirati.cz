@@ -4,3 +4,9 @@
 @charset "utf-8";
 
 @import 'main.scss';
+
+tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+}
