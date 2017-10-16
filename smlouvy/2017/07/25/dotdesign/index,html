@@ -1,0 +1,40 @@
+---
+"layout":           contract
+"datum podpisu":    2017-07-25
+"datum účinnosti":  2017-07-25
+"datum ukončení":   2017-10-22
+title:              Darovací smlouva
+"použité smluvní typy":
+  - Příkazní smlouva
+"předmět":          nafinanční dar v hodnotě 4020 Kč
+"stav":             v plnění
+"smluvní strany":
+ -   
+  "jméno":    "Česká pirátská strana"
+  "orgán":    Volební výbor
+  "zástupce": štěpán Štrébl
+  "funkce":   Volební manažer
+  "značka":   
+  "role":     obdarovaný
+ -   
+  "jméno":    "dot. DesingStudio s.r.o."
+  "IČO":  62501691
+  "Sídlo": Hraniční 2253, 37006 České Budějovice
+  "role":     dárce
+  "značka":   
+
+"náklady": 
+
+"výběrko":   
+
+"místo uložení": Archiv, sídlo strany, Řehořova 19, Praha 3
+
+"soubory":
+ - 
+  "název": "Zadávací list volební manažer"
+  "podepsaná verze": dan-pecha.pdf
+  "strojově čitelná verze": 
+  "upravitelná verze": 
+  "náhled": miniatura.jpg
+---
+
