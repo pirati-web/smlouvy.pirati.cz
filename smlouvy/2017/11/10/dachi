@@ -1,0 +1,39 @@
+---
+"layout":           contract
+"datum podpisu":    2017-11-10
+"datum účinnosti":  2017-11-10
+"datum ukončení":   
+title:              Dohoda o složení rezervačního poplatku
+"použité smluvní typy":
+  - dohoda o složení rezervačního poplatku
+"předmět":          Dohoda o složení rezervačního poplatku - pronájem krajské poslanecké kanceláře Olomouc 
+"stav":             v plnění
+"smluvní strany":
+ -   
+  "jméno":    "Česká pirátská strana"
+  "orgán":    Krajské sdružení Olomoucký kraj
+  "zástupce": Bc. Vojtěch Pikal
+  "funkce":   1. místopředseda krajského sdružení
+  "role":     nájemce - složitel
+  "značka":   KF OlK 15/2017
+ -   
+  "název":    DATROLEX, s.r.o.
+  "sídlo":    8. května 522/5, 77900 Olomouc
+  "role":     pronajímatel
+  
+   "název":  "DACHI, s.r.o."
+   "IČ":      26821176
+  "sídlo":    Praha 10, Strašnice, Na Výsluní 201/13, 10000
+  "zástupce": Žaneta Hanelová
+  "role":     Zajišťovatel
+
+"náklady":  36300Kč
+
+"místo uložení": Archiv, sídlo strany, Řehořova 19, Praha 3
+
+"soubory":
+ - 
+  "název": Rezervace DACHI
+  "podepsaná verze": "rezervace_DACHI.pdf"
+ 
+---
