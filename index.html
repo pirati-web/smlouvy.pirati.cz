@@ -21,6 +21,7 @@ layout: default
             <th>Předmět plnění</th>
             <th class="text-right">Odhad nákladů</th>
             <th>Stav</th>
+            <th>Invent.</th>
           </tr>
       </thead>
       <tfoot>
@@ -31,6 +32,7 @@ layout: default
               <th>Předmět plnění</th>
               <th class="text-right">Odhad nákladů</th>
               <th>Stav</th>
+              <th>Invent.</th>
           </tr>
       </tfoot>
       <tbody>
@@ -42,6 +44,7 @@ layout: default
         <td>{{page["předmět"]}}</td>
         <td class="text-right">{{page["náklady"]}} Kč</td>
         <td>{{page["stav"]}}</td>
+        <td>{{page["Inventurizováno"]}}</td>
       </tr>
       {% endfor %}
       </tbody>
