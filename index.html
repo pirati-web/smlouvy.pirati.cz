@@ -38,7 +38,7 @@ layout: default
       <tbody>
       {% for page in sorted_pages reversed %}
       <tr{% if page["stav"] contains 'splněn' or page["stav"] contains 'ukon' %} class="success"{% elsif page["stav"] contains 'odstoup' or page["stav"] contains 'vypově' or page["stav"] contains 'výpově' %} class="danger"{% endif %} role="row">
-        <td>{{page["datum podpisu"] }}</td>
+        <td>{{page["datum podpisu"]  | date: "%-d. %-m. %Y"  }}</td>
         <td><a href="{{ page.url }}">{{page["title"]}}</a></td>
         <td>{% for smluvnik in page["smluvní strany"] offset:1 %} {% if forloop.index != 1 %}<br/>{% endif %} {{ smluvnik["jméno"] }} {% endfor %}</td>
         <td>{{page["předmět"]}}</td>
