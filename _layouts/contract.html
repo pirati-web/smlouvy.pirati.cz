@@ -10,7 +10,7 @@ layout: default
     <thead>
       <tr>
         <th width="20%"></th>
-        <th width="70%"></th>
+        <th width="80%"></th>
       </tr>
     </thead>
     <tbody>
@@ -53,6 +53,10 @@ layout: default
         </td>
       </tr>
       <tr>
+        <th><i class="fa fa-file" aria-hidden="true"></i>Druh plnění</th>
+        <td>{{page["použité smluvní typy"] }}</td>
+      </tr>
+      <tr>
         <th><i class="fa fa-globe" aria-hidden="true"></i>Předmět plnění</th>
         <td>{{page["předmět"] | date: "%-d. %-m. %Y" }}</td>
       </tr>
@@ -74,7 +78,7 @@ layout: default
       <div style="width:120px;float:left;margin-right:10px">
 
       <div class="btn-group">
-        <a class="btn btn-success" href="{% if soubor["strojově čitelná verze"] %}{{ soubor["strojově čitelná verze"] }}{% elsif soubor["podepsaná verze"] %}{{ soubor["podepsaná verze"] }}{% elsif soubor["upravitelná verze"] %}{{ soubor["upravitelná verze"] }}{% endif %}">Stáhnout</a>
+        <a class="btn btn-success" href="{% if soubor["strojově čitelná verze"] %}{{ soubor["strojově čitelná verze"] }}{% elsif soubor["podepsaná verze"] %}{{ soubor["podepsaná verze"] }}{% elsif soubor["upravitelná verze"] %}{{ soubor["upravitelná verze"] }}{% endif %}">Stáhnout ve verzi:</a>
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
           <span class="sr-only">Otevřít nabídku</span>
@@ -82,15 +86,15 @@ layout: default
         <ul class="dropdown-menu" role="menu">
 
       {% if soubor["strojově čitelná verze"] %}
-          <li><a href="{{ soubor["strojově čitelná verze"] }}">Strojově čitelná verze</a></li>
+          <li><a href="{{ soubor["strojově čitelná verze"] }}">Strojově čitelné</a></li>
       {% endif%}
 
       {% if soubor["podepsaná verze"] %}
-          <li><a href="{{ soubor["podepsaná verze"] }}">Podepsaná verze</a></li>
+          <li><a href="{{ soubor["podepsaná verze"] }}">Podepsané</a></li>
       {% endif %}
 
       {% if soubor["upravitelná verze"] %}
-          <li><a href="{{ soubor["upravitelná verze"] }}">Upravitelná verze</a></li>
+          <li><a href="{{ soubor["upravitelná verze"] }}">Upravitelné</a></li>
       {% endif %}
         </ul>
       </div>
