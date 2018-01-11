@@ -44,7 +44,7 @@ layout: default
         <td>{{page["předmět"]}}</td>
         <td class="text-right">{{page["náklady"]}} Kč</td>
         <td>{{page["stav"]}}</td>
-        <td>{{page["inventurizovano"]}}</td>
+        <td>{{page["inventurizovano"]  | date: "%-d. %-m. %Y" }}</td>
       </tr>
       {% endfor %}
       </tbody>
