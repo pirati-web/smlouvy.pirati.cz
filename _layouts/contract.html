@@ -39,7 +39,7 @@ layout: default
           <ol>
             {% for smluvnik in page["smluvní strany"]%}
               <li>{% if smluvnik["role"] %}<strong>{{ smluvnik["role"] | capitalize }}</strong>: <br/ >{% endif %}
-              {{ smluvnik["jméno"] }}{% if smluvnik["IČ"] %}, IČ {{ smluvnik["IČ"] }}{% elsif smluvnik["narozen"] %}, nar. {{ smluvnik["narozen"]  }}{% endif %}{% if smluvnik["orgán"] %}, {{ smluvnik["orgán"] }}{% endif %}
+              {{ smluvnik["jméno"] }}{% if smluvnik["IČ"] %}, IČ {{ smluvnik["IČ"] }}{% elsif smluvnik["Ič"] %}, IČO {{ smluvnik["Ič"]  }}{% elsif smluvnik["IČO"] %}, IČO {{ smluvnik["IČO"]  }}{% elsif smluvnik["narozen"] %}, nar. {{ smluvnik["narozen"]  }}{% endif %}{% if smluvnik["orgán"] %}, {{ smluvnik["orgán"] }}{% endif %}
 
       {% if smluvnik["bydliště"] %}<br/>
       trvale bytem {{ smluvnik["bydliště"] }}
