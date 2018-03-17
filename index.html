@@ -19,6 +19,7 @@ layout: default
             <th>Název</th>
             <th>Další smluvní strany</th>
             <th>Předmět plnění</th>
+            <th>Druh plnění</th>
             <th class="text-right">Odhad nákladů</th>
             <th>Stav</th>
             <th>Invent.</th>
@@ -42,6 +43,7 @@ layout: default
         <td><a href="{{ page.url }}">{{page["title"]}}</a></td>
         <td>{% for smluvnik in page["smluvní strany"] offset:1 %} {% if forloop.index != 1 %}<br/>{% endif %} {{ smluvnik["jméno"] }} {% endfor %}</td>
         <td>{{page["předmět"]}}</td>
+        <td>{{page["použité smluvní typy"] }}</td>
         <td class="text-right">{{page["náklady"]}} Kč</td>
         <td>{{page["stav"]}}</td>
         <td>{{page["inventurizovano"]  | date: "%-d. %-m. %Y" }}</td>
