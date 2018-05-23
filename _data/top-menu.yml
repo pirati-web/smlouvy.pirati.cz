@@ -1,12 +1,6 @@
 - link: pirati.cz
   url: https://www.pirati.cz
   icon: fa fa-home
-- link: Diskuse
-  url: https://forum.pirati.cz
-  icon: fa fa-comments
-- link: Volné úkoly
-  url: https://ukoly.pirati.cz
-  icon: fa fa-tasks
-- link: Pirátské listy
-  url: http://www.piratskelisty.cz
-  icon: fa fa-newspaper-o
+- link: Smlouvy poslaneckého klubu
+  url: https://smlouvy-psp.pirati.cz
+  icon: fa fa-university
