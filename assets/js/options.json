@@ -7,6 +7,24 @@
 		}
 	},
 	"fields": {
+                "heading" : {
+                    "placeholder" : "Název smlouvy, dokumentu"
+                },
+                "subject" : {
+                    "placeholder" : "Předmět smlouvy. Z předmětu by mělo být jasné o čem daná smlouva je."
+                },
+                "contract_end" : {
+                    "placeholder" : "Datum, do kdy by měl být kontrakt ukončen."
+                },
+                "sign" : {
+                    "placeholder" : "Datum, kdy byl dokument oboustranně podepsán (tvoří cestu ke složce)."
+                },
+                "effective" : {
+                    "placeholder" : "Datum, kdy začíná účinnost dokumentu."
+                },
+                "contract_type" : {
+                    "placeholder" : "O jakou smlouvu se jedná (DPP, DPČ, ...)"
+                },
 		"name": {
 			"hideInitValidationError": true
 		},
@@ -24,6 +42,11 @@
 			"type": "file",
 			"styled": true,
                         "id": "files3-id"
+		},
+		"docs4": {
+			"type": "file",
+			"styled": true,
+                        "id": "files4-id"
 		}
 	}
 }

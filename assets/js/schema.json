@@ -8,14 +8,14 @@
             "description": "",
             "type": "string",
             "required": true,
-            "default": "Název smlouvy"
+            "default": ""
         },
         "subject": {
             "title": "Předmět",
             "description": "Předmět smlouvy",
             "type": "string",
             "required": true,
-            "default": "Předmět smlouvy. Z předmětu by mělo být jasné o čem daná smlouva je."
+            "default": ""
         },
         "status": {
             "title": "Stav",
@@ -46,6 +46,15 @@
             "type": "string",
             "format": "date"
         },
+        "contract_end": {
+            "title": "Datum ukončení",
+            "type": "string",
+            "format": "date"
+        },
+        "contract_type": {
+            "title": "Použité smluvní typy",
+            "type": "string"
+        },
         "tender": {
             "title": "Odkaz na výběrové řízení",
             "type": "string",
@@ -64,16 +73,20 @@
             "maxLength": 42
         },
         "docs": {
-            "title": "Naskenované PDF",
+            "title": "Podepsaná verze (naskenované PDF)",
             "type": "docs"
         },
         "docs2": {
-            "title": "Strojově čitelné PDF",
+            "title": "Strojově čitelná verze (PDF z editovatelného dokumentu)",
             "type": "docs2"
         },
         "docs3": {
-            "title": "Editovatelný dokument",
+            "title": "Upravitelná verze (editovatelný dokument)",
             "type": "docs3"
+        },
+        "docs4": {
+            "title": "Náhled (miniatura .JPG)",
+            "type": "docs4"
         },
         "parties": {
             "title": "Smluvní strany",
@@ -89,15 +102,31 @@
                         "type": "string",
                         "required": true
                     },
+                    "sidlo": {
+                        "title": "Sídlo",
+                        "type": "string"
+                    },
+                    "bydliste": {
+                        "title": "Bydliště",
+                        "type": "string"
+                    },
+                    "ico": {
+                        "title": "IČ",
+                        "type": "string"
+                    },
+                    "narozen": {
+                        "title": "Narozen",
+                        "type": "string"
+                    },
                     "organization": {
                         "title": "Organizace",
                         "type": "string"
                     },
                     "agent": {
-                        "title": "Zástupce s. strany",
+                        "title": "Zástupce smluvní strany",
                         "type": "string"
                     },
-                    "function": {
+                    "func": {
                         "title": "Funkce",
                         "type": "string"
                     },

@@ -4,18 +4,24 @@ title: Registr smluv - upload
 description: Registr smluv Pirátské strany - formulář pro nahrávání.
 ---
 
-<div>
-   {{ site.["text"]["upload"]  }}
+<div class="row">
+    <div class="medium-16">
+        <div> {{ site.["text"]["upload"]  }} </div>
+
+        <div id="upload-done" class="hidden alert alert-success">
+            <span class="glyphicon glyphicon-ok"></span> Nahráno do registru
+        </div>
+
+        <div id="upload-pending" class="hidden alert alert-info">
+            Probíhá nahrávání do registru: <span id="upload-status"></span>
+        </div>
+
+        <div id="upload-alert" class="hidden alert alert-danger">
+            <span class="glyphicon glyphicon-stop"></span>
+            Váš prohlížeč nepodporuje upload smluv. Použijte takový, kteýr má podporu fileAPI.
+        </div>
+
+        <div id="upload-form"></div>
+    </div>
 </div>
-
-<div id="upload-done" class="hidden alert alert-success">
-    <span class="glyphicon glyphicon-ok"></span> Nahráno do registru
-</div>
-
-<div id="upload-alert" class="hidden alert alert-danger">
-    <span class="glyphicon glyphicon-stop"></span> Váš prohlížeč nepodporuje upload smluv. Použijte takový, kteýr má podporu fileAPI.
-</div>
-
-
-<div id="upload-form"></div>
 <script src="/assets/js/upload.js"></script>

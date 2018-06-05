@@ -6,12 +6,30 @@
  * @return {string} format: yyyy-mm-dd
  */
 var convertDate = function(date) {
-	var correctDate = /\d{4}-\d{2}-\d{2}/i
+	var correctDate = /\d{4}-\d{2}-\d{2}/i ;
 	if( correctDate.test(date) ) {
 		return date;
 	}
-	var splited = date.split('/');
-	return splited[2] + '-' + splited[0] + '-' + splited[1];
+
+	correctDate = /\d{4}\/\d{2}\/\d{2}/i ;
+	if( correctDate.test(date) ) {
+            var splited = date.split('/');
+            return splited[2] + '-' + splited[0] + '-' + splited[1];
+	}
+
+	correctDate = /\d{1,2}\.\d{1,2}.\d{4}/i ;
+	if( correctDate.test(date) ) {
+            var splited = date.split('.');
+            if( splited[0].length == 1 ){
+                splited[0] = '0'+splited[0];
+            }
+            if( splited[1].length == 1 ){
+                splited[1] = '0'+splited[1];
+            }
+            return splited[2] + '-' + splited[1] + '-' + splited[0];
+	}
+
+        return '0000-00-00';
 }
 
 /**
@@ -43,60 +61,45 @@ var done = function() {
  * @param {object} files name: content
  * @param {string} message commit message
  */
-var sendToGithub = function(basePath, token, files, message) {
+var sendToGithub = function(basePath, token, files, message, date_signed) {
+        /**
+         *  we could use ... https://gist.github.com/StephanHoyer/91d8175507fcae8fb31a
+         *  but the writeMany function is missing there
+         */
 	console.log('sendToGithub');
+	$('#upload-status').append("odesílám na GitHUB<br/>");
 	var github = new Octokit({
 		token: token
 	});
 
 	var repoName = "{{ site.["github"]["repo"] }}";
 	var userName = "{{ site.["github"]["user"] }}";
-	var repo = github.getRepo( userName, repoName);
-	var branch = repo.getBranch();
 
-        for( var key in files ){
-            files[basePath + key] = files[key];
-            delete files[key];
-	};
+        var repo = github.getRepo(userName, repoName);
+        var br = repo.getBranch('gh-pages');
+        var br_new_name = 'smlouva-' + date_signed + '-' + ((new Date()).getTime());
 
-	branch.writeMany(files, message).then(function(res) {
-		if(res) {
-			done();
-		} else {
-			console.error(res);
-			alert('Nezdařilo se poslat data.');
-		}
-	});
-}
+	$('#upload-status').append("vytvářím větev " + br_new_name + "<br/>");
+        br.createBranch(br_new_name).then(function(rslt){
+            for( var key in files ){
+                files[basePath + key] = files[key];
+                delete files[key];
+            };
 
-/**
- *  we could use ... https://gist.github.com/StephanHoyer/91d8175507fcae8fb31a
- */
-var sendToGithub_octokat = function(basePath, token, files, message) {
-	console.log('sendToGithub');
-	var github = new Octokat({
-		token: token
-	});
+            var br_new = repo.getBranch(br_new_name);
 
-	var repoName = "{{ site.["github"]["repo"] }}";
-	var userName = "{{ site.["github"]["user"] }}";
-	var repo = github.repos( userName, repoName).fetch();
-        return;
-	var branch = repo.branches('gh-pages').create();
+            $('#upload-status').append("zapisuji soubory <br/>");
 
-	_.each(files, function(val, key) {
-		files[basePath + key] = val;
-		delete files[key];
-	}, this);
+            br_new.writeMany(files, message).then(function(res) {
+                    if(res) {
+                            done();
+                    } else {
+                            console.error(res);
+                            alert('Nezdařilo se poslat data.');
+                    }
+            });
+        });
 
-	branch.writeMany(files, message).then(function(res) {
-		if(res) {
-			done();
-		} else {
-			console.error(res);
-			alert('Nezdařilo se poslat data.');
-		}
-	});
 }
 
 /**
@@ -106,34 +109,37 @@ var sendToGithub_octokat = function(basePath, token, files, message) {
  * @param {string} basePath
  * @param {callback}
  * @param {string} token
- * @param {string} name
+ * @param {string} date_signed
  */
-var readFilesAndCall = function(elId, files, basePath, callback, token, message, name) {
+var readFilesAndCall = function(elId, files, basePath, callback, token, message, date_signed) {
+	$('#upload-status').append("načítám soubory<br/>");
+
 	var el = document.getElementById(elId);
 	var reader = new FileReader();
 	var count = (el.files.length || 0);
 	var processedCount = 0;
 
-	for (var i = 0; i < count; i++) {
-		var file = el.files[i];
-		reader.onloadend = function(evt) {
-			if (evt.target.readyState == FileReader.DONE) {
-				var fileContent =  evt.target.result.substring('data:application/octet-stream;base64,'.length);
-				files[ file.name ] = {
-					isBase64: true,
-					content: fileContent
-				};
-			} else {
-				console.warn(evt.target.error);
-			}
-			processedCount++;
-			if(processedCount == count) {
-				sendToGithub(basePath, token, files, message);
-			}
-		};
-		var blob = file.slice(0, file.size);
-		reader.readAsDataURL(blob);
-	}
+        for (var i = 0; i < count; i++) {
+            var file = el.files[i];
+            reader.onloadend = function(evt) {
+                if (evt.target.readyState == FileReader.DONE) {
+                    var fileContent =  evt.target.result.substring(
+                                'data:application/octet-stream;base64,'.length);
+                    files[ file.name ] = {
+                        isBase64: true,
+                        content: fileContent
+                    };
+                } else {
+                    console.warn(evt.target.error);
+                }
+                processedCount++;
+                if(processedCount == count) {
+                    sendToGithub(basePath, token, files, message, date_signed);
+                }
+            };
+            var blob = file.slice(0, file.size);
+            reader.readAsDataURL(blob);
+        }
 }
 
 /**
@@ -151,43 +157,55 @@ var handleData = function(e, control) {
 		values.costs = 0;
 	}
 
+        window.scrollTo(0,0);
+	$('#upload-status').append("<br/>vyhodnocuji formulář<br/>");
+	$('#upload-pending').removeClass('hidden').show();
+
+        // data validation
+        values.sign = convertDate(values.sign);
+        values.effective = convertDate(values.effective);
+        values.contract_end = convertDate(values.contract_end);
+
 	var text = '---\n"layout": contract' +
-	'\n"datum podpisu": ' +
-	convertDate(values.sign) +
-	'\n"datum účinnosti": ' +
-	convertDate(values.effective) +
-	'\n"title": "' +
-	values.heading + '"' +
-	'\n"předmět": "' +
-	values.subject + '"' +
-	'\n"stav": ' +
-	values.status +
-	'\n"náklady": ' +
-	values.costs +
-	'\n"místo uložení": ' +
-	values.location +
-	'\n"výběrko": ' +
-	values.tender +
+	'\n"datum podpisu": ' + values.sign +
+	'\n"datum účinnosti": ' + values.effective +
+	'\n"datum ukončení": ' + values.contract_end +
+	'\n"title": "' + values.heading + '"' +
+        '\n"použité smluvní typy":' +
+        '\n  - ' + values.contract_type +
+	'\n"předmět": "' + values.subject + '"' +
+	'\n"stav": ' + values.status +
+	'\n"náklady": ' + values.costs +
+	'\n"místo uložení": ' + values.location +
+	'\n"výběrko": ' + values.tender +
 	'\n"smluvní strany":';
 
 	for(var i = 0; i < values.parties.length; i++) {
 		var party = values.parties[i];
 		text += "\n -\n";
 		text += '  "jméno": "' + party.name + '"\n';
+		text += '  "sídlo": ' + party.sidlo + '\n';
+		text += '  "bydliště": ' + party.bydliste + '\n';
+		text += '  "IČ": ' + party.ico + '\n';
+		text += '  "narozen": ' + party.narozen + '\n';
+
 		text += '  "orgán": ' + party.organization + '\n';
 		text += '  "zástupce": ' + party.agent + '\n';
-		text += '  "funkce": ' + party.function + '\n';
+		text += '  "funkce": ' + party.func + '\n';
 		text += '  "role": ' + party.role + '\n';
 		text += '  "sign": ' + party.sign + '\n';
 	}
 	text += '"soubory":\n';
 	text += ' -\n  "podepsaná verze": ' + values.docs + '\n';
+	text += ' -\n  "strojově čitelná verze": ' + values.docs2 + '\n';
+	text += ' -\n  "upravitelná verze": ' + values.docs3 + '\n';
+	text += ' -\n  "náhled": ' + values.docs4 + '\n';
 	text += '---';
 
-	var basePath = createBasePath(convertDate(values.sign));
+	var basePath = createBasePath(values.sign);
 	var message = 'Nahrání smlouvy ' + values.name + ' ze dne ' +  values.sign;
 
-	readFilesAndCall('files-id', {'index.html': text}, basePath, sendToGithub, token, message, values.docs);
+	readFilesAndCall('files-id', {'index.html': text}, basePath, sendToGithub, token, message, values.sign);
 };
 
 /**
