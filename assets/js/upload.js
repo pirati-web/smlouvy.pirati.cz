@@ -30,7 +30,7 @@ var createBasePath = function(date) {
  */
 var done = function() {
 	console.log('done');
-	$('#upload-done').removeClass('hidden');
+	$('#upload-done').removeClass('hidden').show();
 	$("#upload-form").hide();
 }
 
