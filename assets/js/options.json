@@ -12,15 +12,18 @@
 		},
 		"docs": {
 			"type": "file",
-			"styled": true
+			"styled": true,
+                        "id": "files-id"
 		},
 		"docs2": {
 			"type": "file",
-			"styled": true
+			"styled": true,
+                        "id": "files2-id"
 		},
 		"docs3": {
 			"type": "file",
-			"styled": true
+			"styled": true,
+                        "id": "files3-id"
 		}
 	}
 }

@@ -65,21 +65,15 @@
         },
         "docs": {
             "title": "Naskenované PDF",
-            "type": "file",
-            "styled": true,
-            "id": "files-id"
+            "type": "docs"
         },
         "docs2": {
             "title": "Strojově čitelné PDF",
-            "type": "file",
-            "styled": true,
-            "id": "files2-id"
+            "type": "docs2"
         },
         "docs3": {
             "title": "Editovatelný dokument",
-            "type": "file",
-            "styled": true,
-            "id": "files3-id"
+            "type": "docs3"
         },
         "parties": {
             "title": "Smluvní strany",
