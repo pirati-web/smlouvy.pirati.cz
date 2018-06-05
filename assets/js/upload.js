@@ -111,16 +111,28 @@ var sendToGithub = function(basePath, token, files, message, date_signed) {
  * @param {string} token
  * @param {string} date_signed
  */
-var readFilesAndCall = function(elId, files, basePath, callback, token, message, date_signed) {
+var readFilesAndCall = function(elem_ids, files, basePath, callback, token, message, date_signed) {
 	$('#upload-status').append("načítám soubory<br/>");
 
-	var el = document.getElementById(elId);
-	var reader = new FileReader();
-	var count = (el.files.length || 0);
-	var processedCount = 0;
+        var reader, el, count, processedCount, key, val, all_files_elems;
 
-        for (var i = 0; i < count; i++) {
-            var file = el.files[i];
+        reader = new FileReader();
+        processedCount = 0;
+        count = 0;
+        all_files_elems = [];
+
+        for(key in elem_ids){
+            el = document.getElementById(elem_ids[key]);
+            for (var i = 0; i < el.files.length; i++) {
+                all_files_elems.push(el.files[i]);
+                count += 1;
+            };
+        }
+
+        var i = 0;
+        // to load aal files one by one
+        function loadOneFile(){
+            var file = all_files_elems[i];
             reader.onloadend = function(evt) {
                 if (evt.target.readyState == FileReader.DONE) {
                     var fileContent =  evt.target.result.substring(
@@ -134,12 +146,19 @@ var readFilesAndCall = function(elId, files, basePath, callback, token, message,
                 }
                 processedCount++;
                 if(processedCount == count) {
+                    // all loaded
                     sendToGithub(basePath, token, files, message, date_signed);
+                } else if ( processedCount < count ){
+                    // load next files
+                    i += 1;
+                    loadOneFile();
                 }
             };
-            var blob = file.slice(0, file.size);
-            reader.readAsDataURL(blob);
+            reader.readAsDataURL(file.slice(0, file.size));
         }
+
+        // start loading files
+        loadOneFile();
 }
 
 /**
@@ -205,7 +224,8 @@ var handleData = function(e, control) {
 	var basePath = createBasePath(values.sign);
 	var message = 'Nahrání smlouvy ' + values.name + ' ze dne ' +  values.sign;
 
-	readFilesAndCall('files-id', {'index.html': text}, basePath, sendToGithub, token, message, values.sign);
+	readFilesAndCall(['files-id', 'files2-id', 'files3-id', 'files4-id'],
+                {'index.html': text}, basePath, sendToGithub, token, message, values.sign);
 };
 
 /**
