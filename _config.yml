@@ -24,3 +24,7 @@ author:
     url:		https://www.pirati.cz/lide/jakub_michalek
   - name:   'Ondřej Profant'
     url:    https://www.pirati.cz/lide/ondrej_profant
+
+github:
+  user: pirati-web
+  repo: smlouvy.pirati.cz

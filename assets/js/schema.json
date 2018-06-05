@@ -1,0 +1,116 @@
+{
+    "title": "Nahrání smlouvy",
+    "description": "Vložení nové smlouvy do registru smluv.",
+    "type": "object",
+    "properties": {
+        "heading": {
+            "title": "Název smlouvy",
+            "description": "",
+            "type": "string",
+            "required": true,
+            "default": "Název smlouvy"
+        },
+        "subject": {
+            "title": "Předmět",
+            "description": "Předmět smlouvy",
+            "type": "string",
+            "required": true,
+            "default": "Předmět smlouvy. Z předmětu by mělo být jasné o čem daná smlouva je."
+        },
+        "status": {
+            "title": "Stav",
+            "type": "string",
+            "enum": [
+                "splněna",
+            "odstoupeno",
+            "v plnění"
+            ],
+            "required": true,
+            "default": "v plnění"
+        },
+        "costs": {
+            "title": "Náklady",
+            "type": "number",
+            "description": "Odhadovaná výše nákladů",
+            "minimum": 0,
+            "required": true,
+            "default": 0
+        },
+        "sign": {
+            "title": "Datum podpisu",
+            "type": "string",
+            "format": "date"
+        },
+        "effective": {
+            "title": "Datum účinnosti",
+            "type": "string",
+            "format": "date"
+        },
+        "tender": {
+            "title": "Odkaz na výběrové řízení",
+            "type": "string",
+            "format": "uri"
+        },
+        "location": {
+            "title": "Místo uložení",
+            "type": "string"
+        },
+        "token": {
+            "title": "Github access token",
+            "description": "Token vám musí vygenerovat správce repozitáře.",
+            "type": "string",
+            "required": true,
+            "minLength": 40,
+            "maxLength": 42
+        },
+        "docs": {
+            "title": "Naskenované PDF",
+            "type": "file"
+        },
+        "docs2": {
+            "title": "Strojově čitelné PDF",
+            "type": "file"
+        },
+        "docs3": {
+            "title": "Editovatelný dokument",
+            "type": "file"
+        },
+        "parties": {
+            "title": "Smluvní strany",
+            "type": "array",
+            "items": {
+                "title": "sluvní strana",
+                "type": "object",
+                "minItems": 0,
+                "maxItems": 5,
+                "properties": {
+                    "name": {
+                        "title": "Jméno",
+                        "type": "string",
+                        "required": true
+                    },
+                    "organization": {
+                        "title": "Organizace",
+                        "type": "string"
+                    },
+                    "agent": {
+                        "title": "Zástupce s. strany",
+                        "type": "string"
+                    },
+                    "function": {
+                        "title": "Funkce",
+                        "type": "string"
+                    },
+                    "role": {
+                        "title": "Role",
+                        "type": "string"
+                    },
+                    "sign": {
+                        "title": "Značka",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
