@@ -8,6 +8,26 @@ description: Registr smluv Pirátské strany - formulář pro nahrávání.
     <div class="medium-16">
         <div> {{ site.["text"]["upload"]  }} </div>
 
+        <div class="intro">
+        <h2>Návod k použití</h2>
+        <p>Pro využití možnosti nahrávání pomocí tohoto formuláře potřebujete tzv. GitHub "access-token",
+        který je možno si vygenerovat po přihlášení do GitHUB
+        <a href="https://github.com/settings/tokens">zde</a>.
+        </p>
+
+        <p>Použijte volbu "Generate new token", zadejte popisný název pro token, a ze zaškrtávací nabídky
+        vyberte POUZE <b>"public_repo" - Access public repositories , NIC jiného</b>. Vygenerovaný dlouhý
+        řetězec si uložte na bezpečné místo (např. do správce hesel). 
+        Budete ho zadávat při každém vyplňování formuláře.
+        </p>
+
+        <p>Tento <b>token</b> je třeba zadat do kolonky níže. Má stejnou váhu, jako přihlášení heslem,
+        je třeba ho náležitě <b>chránit</b> a uchovávat v tajnosti. V případě potřeby lze token vymazat
+        na odkazu uvedeném výše. Tamtéž lze i vyrobit nový.
+        </p>
+
+        </div>
+
         <div id="upload-done" class="hidden alert alert-success">
             <span class="glyphicon glyphicon-ok"></span> Nahráno do registru
         </div>
