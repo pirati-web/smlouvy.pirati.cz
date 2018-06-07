@@ -195,9 +195,13 @@ var handleData = function(e, control) {
         values.effective = convertDate(values.effective);
         values.contract_end = convertDate(values.contract_end);
 
-        if( ! values.heading || ! (/^[a-z\-_]{5,30}$/.test(values.heading) ) ){
-            $('#upload-status').append("<br/>chyba ve formátu názvu smlouvy<br/>");
-            return;
+        if( typeof(values.heading) !== undefined ){
+            if(! (/^[a-z\-_0-9]{5,30}$/.test(values.heading) ) ){
+                $('#upload-status').append("<br/>chyba ve formátu názvu smlouvy<br/>");
+                return;
+            }
+        } else {
+            $('#upload-status').append("<br/>název smlouvy je 'undefined'.<br/>");
         }
 
 	var text = '---\n"layout": contract' +
