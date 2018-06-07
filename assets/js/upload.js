@@ -232,7 +232,7 @@ var handleData = function(e, control) {
 	text += ' -\n  "náhled": ' + values.docs4 + '\n';
 	text += '---';
 
-	var basePath = createBasePath(values.sign) + values.heading;
+	var basePath = createBasePath(values.sign) + values.heading + '/';
 	var message = 'Nahrání smlouvy ' + values.name + ' ze dne ' +  values.sign;
 
 	readFilesAndCall(['files-id', 'files2-id', 'files3-id', 'files4-id'],
