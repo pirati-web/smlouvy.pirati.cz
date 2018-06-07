@@ -135,36 +135,40 @@ var readFilesAndCall = function(elem_ids, files, basePath, callback, token, mess
             };
         }
 
-        var i = 0;
-        // to load aal files one by one
-        function loadOneFile(){
-            var file = all_files_elems[i];
-            reader.onloadend = function(evt) {
-                if (evt.target.readyState == FileReader.DONE) {
-                    var fileContent =  evt.target.result.substring(
-                                'data:application/octet-stream;base64,'.length);
-                    files[ file.name ] = {
-                        isBase64: true,
-                        content: fileContent
-                    };
-                } else {
-                    console.warn(evt.target.error);
-                }
-                processedCount++;
-                if(processedCount == count) {
-                    // all loaded
-                    sendToGithub(basePath, token, files, message, values_sign, values_heading);
-                } else if ( processedCount < count ){
-                    // load next files
-                    i += 1;
-                    loadOneFile();
-                }
-            };
-            reader.readAsDataURL(file.slice(0, file.size));
-        }
+        if( count > 0 ){
+            var i = 0;
+            // to load aal files one by one
+            function loadOneFile(){
+                var file = all_files_elems[i];
+                reader.onloadend = function(evt) {
+                    if (evt.target.readyState == FileReader.DONE) {
+                        var fileContent =  evt.target.result.substring(
+                                    'data:application/octet-stream;base64,'.length);
+                        files[ file.name ] = {
+                            isBase64: true,
+                            content: fileContent
+                        };
+                    } else {
+                        console.warn(evt.target.error);
+                    }
+                    processedCount++;
+                    if(processedCount == count) {
+                        // all loaded
+                        sendToGithub(basePath, token, files, message, values_sign, values_heading);
+                    } else if ( processedCount < count ){
+                        // load next files
+                        i += 1;
+                        loadOneFile();
+                    }
+                };
+                reader.readAsDataURL(file.slice(0, file.size));
+            }
 
-        // start loading files
-        loadOneFile();
+            // start loading files
+            loadOneFile();
+        } else {
+            sendToGithub(basePath, token, files, message, values_sign, values_heading);
+        }
 }
 
 /**
