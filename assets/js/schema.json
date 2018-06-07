@@ -11,7 +11,7 @@
             "default": ""
         },
         "subject": {
-            "title": "Předmět",
+            "title": "Předmět smlouvy",
             "description": "Předmět smlouvy",
             "type": "string",
             "required": true,
@@ -81,7 +81,7 @@
             "type": "docs2"
         },
         "docs3": {
-            "title": "Upravitelná verze (editovatelný dokument)",
+            "title": "Upravitelná verze (Word dokument)",
             "type": "docs3"
         },
         "docs4": {
