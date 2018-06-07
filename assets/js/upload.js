@@ -61,7 +61,7 @@ var done = function() {
  * @param {object} files name: content
  * @param {string} message commit message
  */
-var sendToGithub = function(basePath, token, files, message, date_signed) {
+var sendToGithub = function(basePath, token, files, message, values_sign, values_heading) {
         /**
          *  we could use ... https://gist.github.com/StephanHoyer/91d8175507fcae8fb31a
          *  but the writeMany function is missing there
@@ -77,7 +77,7 @@ var sendToGithub = function(basePath, token, files, message, date_signed) {
 
         var repo = github.getRepo(userName, repoName);
         var br = repo.getBranch('gh-pages');
-        var br_new_name = 'smlouva-' + date_signed + '-' + ((new Date()).getTime());
+        var br_new_name = 'smlouva-' + values_sign + "-" + values_heading + '-' + ((new Date()).getTime());
 
 	$('#upload-status').append("vytvářím větev " + br_new_name + "<br/>");
         br.createBranch(br_new_name).then(function(rslt){
@@ -92,7 +92,13 @@ var sendToGithub = function(basePath, token, files, message, date_signed) {
 
             br_new.writeMany(files, message).then(function(res) {
                     if(res) {
-                            done();
+                            repo.createPullRequest({
+                                "title" : 'PR ' + br_new_name ,
+                                "base" : 'gh-pages' ,
+                                "head" : br_new_name 
+                            }).then(function(rsltpr){
+                                done();
+                            });
                     } else {
                             console.error(res);
                             alert('Nezdařilo se poslat data.');
@@ -111,7 +117,7 @@ var sendToGithub = function(basePath, token, files, message, date_signed) {
  * @param {string} token
  * @param {string} date_signed
  */
-var readFilesAndCall = function(elem_ids, files, basePath, callback, token, message, date_signed) {
+var readFilesAndCall = function(elem_ids, files, basePath, callback, token, message, values_sign, values_heading) {
 	$('#upload-status').append("načítám soubory<br/>");
 
         var reader, el, count, processedCount, key, val, all_files_elems;
@@ -147,7 +153,7 @@ var readFilesAndCall = function(elem_ids, files, basePath, callback, token, mess
                 processedCount++;
                 if(processedCount == count) {
                     // all loaded
-                    sendToGithub(basePath, token, files, message, date_signed);
+                    sendToGithub(basePath, token, files, message, values_sign, values_heading);
                 } else if ( processedCount < count ){
                     // load next files
                     i += 1;
@@ -185,6 +191,11 @@ var handleData = function(e, control) {
         values.effective = convertDate(values.effective);
         values.contract_end = convertDate(values.contract_end);
 
+        if( ! values.heading || ! (/^[a-z\-_]{5,30}$/.test(values.heading) ) ){
+            $('#upload-status').append("<br/>chyba ve formátu názvu smlouvy<br/>");
+            return;
+        }
+
 	var text = '---\n"layout": contract' +
 	'\n"datum podpisu": ' + values.sign +
 	'\n"datum účinnosti": ' + values.effective +
@@ -221,11 +232,11 @@ var handleData = function(e, control) {
 	text += ' -\n  "náhled": ' + values.docs4 + '\n';
 	text += '---';
 
-	var basePath = createBasePath(values.sign);
+	var basePath = createBasePath(values.sign) + values.heading;
 	var message = 'Nahrání smlouvy ' + values.name + ' ze dne ' +  values.sign;
 
 	readFilesAndCall(['files-id', 'files2-id', 'files3-id', 'files4-id'],
-                {'index.html': text}, basePath, sendToGithub, token, message, values.sign);
+                {'index.html': text}, basePath, sendToGithub, token, message, values.sign, values.heading);
 };
 
 /**
