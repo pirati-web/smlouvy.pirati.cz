@@ -9,7 +9,7 @@
             "type": "string",
             "required": true,
             "default": "",
-            "pattern": "^[a-z\\-_0-9]{5,30}$"
+            "pattern": "^[a-z\\-_0-9A-Z ]{5,30}$"
         },
         "subject": {
             "title": "Předmět smlouvy",

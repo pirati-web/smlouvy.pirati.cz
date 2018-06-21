@@ -194,15 +194,18 @@ var handleData = function(e, control) {
         values.sign = convertDate(values.sign);
         values.effective = convertDate(values.effective);
         values.contract_end = convertDate(values.contract_end);
+        values.heading = values.heading.trim();
 
         if( typeof(values.heading) !== undefined ){
-            if(! (/^[a-z\-_0-9]{5,30}$/.test(values.heading) ) ){
+            if(! (/^[a-z\-_0-9A-Z ]{5,30}$/.test(values.heading) ) ){
                 $('#upload-status').append("<br/>chyba ve formátu názvu smlouvy<br/>");
                 return;
             }
         } else {
             $('#upload-status').append("<br/>název smlouvy je 'undefined'.<br/>");
         }
+
+        values.heading = values.heading.replace(/ /g,"-");
 
 	var text = '---\n"layout": contract' +
 	'\n"datum podpisu": ' + values.sign +
