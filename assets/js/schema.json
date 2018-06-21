@@ -38,19 +38,22 @@
             "default": 0
         },
         "sign": {
-            "title": "Datum podpisu",
+            "title": "Datum podpisu (dd.mm.RRRR)",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "pattern": "^[0123]?[0-9].[0123]?[0-9].[0-9]{4}$"
         },
         "effective": {
-            "title": "Datum účinnosti",
+            "title": "Datum účinnosti (dd.mm.RRRR)",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "pattern": "^[0123]?[0-9].[0123]?[0-9].[0-9]{4}$"
         },
         "contract_end": {
-            "title": "Datum ukončení",
+            "title": "Datum ukončení (dd.mm.RRRR)",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "pattern": "^[0123]?[0-9].[0123]?[0-9].[0-9]{4}$"
         },
         "contract_type": {
             "title": "Použité smluvní typy",

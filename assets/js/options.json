@@ -8,7 +8,7 @@
 	},
 	"fields": {
                 "heading" : {
-                    "placeholder" : "Název smlouvy, dokumentu (5-30 znaků a-z, pomlčka a podtržítko)"
+                    "placeholder" : "Název smlouvy, dokumentu (5-30 znaků a-z, A-Z, mezera, pomlčka a podtržítko)"
                 },
                 "subject" : {
                     "placeholder" : "Předmět smlouvy. Z předmětu by mělo být jasné o čem daná smlouva je."

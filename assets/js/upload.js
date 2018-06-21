@@ -120,20 +120,41 @@ var sendToGithub = function(basePath, token, files, message, values_sign, values
 var readFilesAndCall = function(elem_ids, files, basePath, callback, token, message, values_sign, values_heading) {
 	$('#upload-status').append("načítám soubory<br/>");
 
-        var reader, el, count, processedCount, key, val, all_files_elems;
+        var reader, el, count, processedCount, key, val, all_files_elems, file_name, textAdd;
 
         reader = new FileReader();
         processedCount = 0;
         count = 0;
         all_files_elems = [];
+        text_add = "";
 
         for(key in elem_ids){
             el = document.getElementById(elem_ids[key]);
             for (var i = 0; i < el.files.length; i++) {
                 all_files_elems.push(el.files[i]);
+
+                file_name = el.files[i].name;
+                switch(elem_ids[key]) {
+                    case 'files-id' :
+                        textAdd += '  "podepsaná verze": ' + file_name + '\n';
+                        break;
+                    case 'files2-id' :
+                        textAdd += '  "strojově čitelná verze": ' + file_name + '\n';
+                        break;
+                    case 'files3-id' :
+                        textAdd += '  "upravitelná verze": ' + file_name + '\n';
+                        break;
+                    case 'files4-id' :
+                        textAdd += '  "náhled": ' + file_name + '\n';
+                        break;
+                }
+
                 count += 1;
             };
         }
+
+        textAdd += '---';
+        files['index.html'] += textAdd;
 
         if( count > 0 ){
             var i = 0;
@@ -236,12 +257,17 @@ var handleData = function(e, control) {
 		text += '  "role": ' + party.role + '\n';
 		text += '  "sign": ' + party.sign + '\n';
 	}
+        
+        //  text se připojí až v následujícím volání
 	text += '"soubory":\n';
+	text += ' -\n';
+        /*
 	text += ' -\n  "podepsaná verze": ' + values.docs + '\n';
 	text += ' -\n  "strojově čitelná verze": ' + values.docs2 + '\n';
 	text += ' -\n  "upravitelná verze": ' + values.docs3 + '\n';
 	text += ' -\n  "náhled": ' + values.docs4 + '\n';
 	text += '---';
+        */
 
 	var basePath = createBasePath(values.sign) + values.heading + '/';
 	var message = 'Nahrání smlouvy ' + values.name + ' ze dne ' +  values.sign;
