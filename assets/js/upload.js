@@ -61,7 +61,7 @@ var done = function() {
  * @param {object} files name: content
  * @param {string} message commit message
  */
-var sendToGithub = function(basePath, token, files, message, values_sign, values_heading) {
+var sendToGithub = function(basePath, token, files, message, values_sign, values_shortheading) {
         /**
          *  we could use ... https://gist.github.com/StephanHoyer/91d8175507fcae8fb31a
          *  but the writeMany function is missing there
@@ -77,7 +77,7 @@ var sendToGithub = function(basePath, token, files, message, values_sign, values
 
         var repo = github.getRepo(userName, repoName);
         var br = repo.getBranch('gh-pages');
-        var br_new_name = 'smlouva-' + values_sign + "-" + values_heading + '-' + ((new Date()).getTime());
+        var br_new_name = 'smlouva-' + values_sign + "-" + values_shortheading + '-' + ((new Date()).getTime());
 
 	$('#upload-status').append("vytvářím větev " + br_new_name + "<br/>");
         br.createBranch(br_new_name).then(function(rslt){
@@ -117,7 +117,7 @@ var sendToGithub = function(basePath, token, files, message, values_sign, values
  * @param {string} token
  * @param {string} date_signed
  */
-var readFilesAndCall = function(elem_ids, files, basePath, callback, token, message, values_sign, values_heading) {
+var readFilesAndCall = function(elem_ids, files, basePath, callback, token, message, values_sign, values_shortheading) {
 	$('#upload-status').append("načítám soubory<br/>");
 
         var reader, el, count, processedCount, key, val, all_files_elems, file_name, textAdd;
@@ -175,7 +175,7 @@ var readFilesAndCall = function(elem_ids, files, basePath, callback, token, mess
                     processedCount++;
                     if(processedCount == count) {
                         // all loaded
-                        sendToGithub(basePath, token, files, message, values_sign, values_heading);
+                        sendToGithub(basePath, token, files, message, values_sign, values_shortheading);
                     } else if ( processedCount < count ){
                         // load next files
                         i += 1;
@@ -188,7 +188,7 @@ var readFilesAndCall = function(elem_ids, files, basePath, callback, token, mess
             // start loading files
             loadOneFile();
         } else {
-            sendToGithub(basePath, token, files, message, values_sign, values_heading);
+            sendToGithub(basePath, token, files, message, values_sign, values_shortheading);
         }
 }
 
@@ -215,10 +215,10 @@ var handleData = function(e, control) {
         values.sign = convertDate(values.sign);
         values.effective = convertDate(values.effective);
         values.contract_end = convertDate(values.contract_end);
-        values.heading = values.heading.trim();
+        values.shortheading = values.shortheading.trim();
 
-        if( typeof(values.heading) !== undefined ){
-            if(! (/^[a-z\-_0-9A-Z ]{5,30}$/.test(values.heading) ) ){
+        if( typeof(values.shortheading) !== undefined ){
+            if(! (/^[a-z\-_0-9A-Z ]{5,30}$/.test(values.shortheading) ) ){
                 $('#upload-status').append("<br/>chyba ve formátu názvu smlouvy<br/>");
                 return;
             }
@@ -226,7 +226,7 @@ var handleData = function(e, control) {
             $('#upload-status').append("<br/>název smlouvy je 'undefined'.<br/>");
         }
 
-        values.heading = values.heading.replace(/ /g,"-");
+        values.shortheading = values.shortheading.replace(/ /g,"-");
 
 	var text = '---\n"layout": contract' +
 	'\n"datum podpisu": ' + values.sign +
@@ -240,11 +240,11 @@ var handleData = function(e, control) {
 	'\n"náklady": ' + values.costs +
 	'\n"místo uložení": ' + values.location +
 	'\n"výběrko": ' + values.tender +
-	'\n"smluvní strany":';
+	'\n"smluvní strany":\n';
 
 	for(var i = 0; i < values.parties.length; i++) {
 		var party = values.parties[i];
-		text += "\n -\n";
+		text += " -\n";
 		text += '  "jméno": "' + party.name + '"\n';
 		text += '  "sídlo": ' + party.sidlo + '\n';
 		text += '  "bydliště": ' + party.bydliste + '\n';
@@ -269,11 +269,11 @@ var handleData = function(e, control) {
 	text += '---';
         */
 
-	var basePath = createBasePath(values.sign) + values.heading + '/';
+	var basePath = createBasePath(values.sign) + values.shortheading + '/';
 	var message = 'Nahrání smlouvy ' + values.name + ' ze dne ' +  values.sign;
 
 	readFilesAndCall(['files-id', 'files2-id', 'files3-id', 'files4-id'],
-                {'index.html': text}, basePath, sendToGithub, token, message, values.sign, values.heading);
+                {'index.html': text}, basePath, sendToGithub, token, message, values.sign, values.shortheading);
 };
 
 /**

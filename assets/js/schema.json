@@ -3,13 +3,20 @@
     "description": "Vložení nové smlouvy do registru smluv.",
     "type": "object",
     "properties": {
-        "heading": {
-            "title": "Název smlouvy",
+        "shortheading": {
+            "title": "Zkrácený název smlouvy",
             "description": "",
             "type": "string",
             "required": true,
             "default": "",
             "pattern": "^[a-z\\-_0-9A-Z ]{5,30}$"
+        },
+        "heading": {
+            "title": "Název smlouvy",
+            "description": "",
+            "type": "string",
+            "required": true,
+            "default": ""
         },
         "subject": {
             "title": "Předmět smlouvy",
@@ -96,7 +103,7 @@
             "title": "Smluvní strany",
             "type": "array",
             "items": {
-                "title": "sluvní strana",
+                "title": "smluvní strana",
                 "type": "object",
                 "minItems": 0,
                 "maxItems": 5,
