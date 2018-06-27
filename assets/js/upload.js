@@ -164,7 +164,7 @@ var readFilesAndCall = function(elem_ids, files, basePath, callback, token, mess
                 reader.onloadend = function(evt) {
                     if (evt.target.readyState == FileReader.DONE) {
                         var fileContent =  evt.target.result.substring(
-                                    'data:application/octet-stream;base64,'.length);
+                                    evt.target.result.indexOf(';base64,')+';base64,'.length);
                         files[ file.name ] = {
                             isBase64: true,
                             content: fileContent
