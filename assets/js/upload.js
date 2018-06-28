@@ -126,7 +126,7 @@ var readFilesAndCall = function(elem_ids, files, basePath, callback, token, mess
         processedCount = 0;
         count = 0;
         all_files_elems = [];
-        text_add = "";
+        textAdd = "";
 
         for(key in elem_ids){
             el = document.getElementById(elem_ids[key]);
@@ -155,6 +155,7 @@ var readFilesAndCall = function(elem_ids, files, basePath, callback, token, mess
 
         textAdd += '---';
         files['index.html'] += textAdd;
+        console.log(files['index.html']);
 
         if( count > 0 ){
             var i = 0;
@@ -228,34 +229,36 @@ var handleData = function(e, control) {
 
         values.shortheading = values.shortheading.replace(/ /g,"-");
 
-	var text = '---\n"layout": contract' +
-	'\n"datum podpisu": ' + values.sign +
-	'\n"datum účinnosti": ' + values.effective +
-	'\n"datum ukončení": ' + values.contract_end +
-	'\n"title": "' + values.heading + '"' +
-        '\n"použité smluvní typy":' +
-        '\n  - ' + values.contract_type +
-	'\n"předmět": "' + values.subject + '"' +
-	'\n"stav": ' + values.status +
-	'\n"náklady": ' + values.costs +
-	'\n"místo uložení": ' + values.location +
-	'\n"výběrko": ' + values.tender +
-	'\n"smluvní strany":\n';
+	var text = '---\n"layout": contract';
+        if(values.sign != undefined){ text += '\n"datum podpisu": ' + values.sign; }
+        if(values.effective != undefined){ text += '\n"datum účinnosti": ' + values.effective; }
+        if(values.contract_end != undefined){ text += '\n"datum ukončení": ' + values.contract_end; }
+        if(values.heading != undefined){ text += '\n"title": "' + values.heading + '"'; }
+        if(values.contract_type != undefined){
+            text += '\n"použité smluvní typy":';
+            text += '\n  - ' + values.contract_type;
+        }
+        if(values.subject != undefined){ text += '\n"předmět": "' + values.subject + '"'; }
+        if(values.status != undefined){ text += '\n"stav": ' + values.status; }
+        if(values.costs != undefined){ text += '\n"náklady": ' + values.costs; }
+        if(values.location != undefined){ text += '\n"místo uložení": ' + values.location; }
+        if(values.tender != undefined){ text += '\n"výběrko": ' + values.tender; }
 
+	text += '\n"smluvní strany":\n';
 	for(var i = 0; i < values.parties.length; i++) {
 		var party = values.parties[i];
 		text += " -\n";
-		text += '  "jméno": "' + party.name + '"\n';
-		text += '  "sídlo": ' + party.sidlo + '\n';
-		text += '  "bydliště": ' + party.bydliste + '\n';
-		text += '  "IČ": ' + party.ico + '\n';
-		text += '  "narozen": ' + party.narozen + '\n';
+                if(party.name != undefined){ text += '  "jméno": "' + party.name + '"\n'; }
+                if(party.sidlo != undefined){ text += '  "sídlo": ' + party.sidlo + '\n'; }
+                if(party.bydliste != undefined){ text += '  "bydliště": ' + party.bydliste + '\n'; }
+                if(party.ico != undefined){ text += '  "IČ": ' + party.ico + '\n'; }
+                if(party.narozen != undefined){ text += '  "narozen": ' + party.narozen + '\n'; }
 
-		text += '  "orgán": ' + party.organization + '\n';
-		text += '  "zástupce": ' + party.agent + '\n';
-		text += '  "funkce": ' + party.func + '\n';
-		text += '  "role": ' + party.role + '\n';
-		text += '  "sign": ' + party.sign + '\n';
+                if(party.organization != undefined){ text += '  "orgán": ' + party.organization + '\n'; }
+                if(party.agent != undefined){ text += '  "zástupce": ' + party.agent + '\n'; }
+                if(party.func != undefined){ text += '  "funkce": ' + party.func + '\n'; }
+                if(party.role != undefined){ text += '  "role": ' + party.role + '\n'; }
+                if(party.sign != undefined){ text += '  "sign": ' + party.sign + '\n'; }
 	}
         
         //  text se připojí až v následujícím volání
