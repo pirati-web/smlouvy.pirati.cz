@@ -100,7 +100,7 @@
             "type": "docs4"
         },
         "parties": {
-            "title": "Smluvní strany",
+            "title": "Smluvní strany (buď pouze protistrana, nebo vč. Pirátů - v tom případě musí být Piráti jako první smluvní strana)",
             "type": "array",
             "items": {
                 "title": "smluvní strana",
