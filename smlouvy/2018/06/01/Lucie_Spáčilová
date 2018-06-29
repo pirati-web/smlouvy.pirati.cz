@@ -1,0 +1,40 @@
+---
+"layout":           contract
+"datum podpisu":    2018-06-01
+"datum účinnosti":  2018-06-01
+"datum ukončení":   na dobu neurčitou
+title:              Administrativní podpora strany
+"použité smluvní typy":
+  - Zadávací list
+"předmět":          Administraivní podpora strany
+"stav":             v plnění
+"inventurizovano":  2018-06-01
+"smluvní strany":
+ -   
+  "jméno":    "Česká pirátská strana"
+  "orgán":    Personální odbor
+  "zástupce": Martin Kučera
+  "funkce":   vedoucí Administrativního odboru
+  "role":     zadavatel
+
+ -   
+  "jméno":    "Lucie Spáčilová"
+  "Ič":        07160062
+  "Sídlo":     Olomouc
+  "role":     Dodavatel
+  "značka":   není
+
+"náklady": 
+
+"výběrko":   
+
+"místo uložení": Archiv, sídlo strany
+
+"soubory":
+ - 
+  "název": "Administrativní podpora strany"
+  "podepsaná verze": zl_spacilova.pdf
+  "strojově čitelná verze": zl_spacilova-sc.pdf
+  "upravitelná verze": zl_spacilova.odt
+  "náhled": miniatura.jpg
+---
