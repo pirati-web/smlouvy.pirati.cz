@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+{% assign sorted_pages = (site.pages | where: "layout", "contract" ) %}
+
+<div class="row">
+  <div class="medium-16">
+    <p>Pro nahrání smlouvy nás kontaktuje na e-mail <a href="archiv@pirati.cz">archiv@pirati.cz</a>; Nahrávání smluv se řídí <a href="https://wiki.pirati.cz/ao/pravidla/registr">předpisem Pirátů</a></p>
+    <p>V současné době <strong>probíhá Inventarizace Smluv</strong>, je tedy možné, že zde některou smlouvu nenaleznete, nebo nebude mít úplně aktuální data.<br/> Děkujeme za pochopení</p>
+  </div>
+</div>
+
+<div class="row">
+  <table id="smlouvy" class="display" cellspacing="0" width="100%" role="grid">
+      <thead>
+          <tr>
+            <th>Den podpisu</th>
+            <th>Název</th>
+            <th>Další smluvní strany</th>
+            <th>Předmět plnění</th>
+            <th>Druh plnění</th>
+            <th class="text-right">Odhad nákladů</th>
+            <th>Stav</th>
+            <th>Invent.</th>
+          </tr>
+      </thead>
+      <tfoot>
+          <tr>
+              <th>Den podpisu</th>
+              <th>Název</th>
+              <th>Další smluvní strany</th>
+              <th>Předmět plnění</th>
+              <th>Druh plnění</th>
+              <th class="text-right">Odhad nákladů</th>
+              <th>Stav</th>
+              <th>Invent.</th>
+          </tr>
+      </tfoot>
+      <tbody>
+      {% for page in sorted_pages reversed %}
+      <tr{% if page["stav"] contains 'splněn' or page["stav"] contains 'ukon' %} class="success"{% elsif page["stav"] contains 'odstoup' or page["stav"] contains 'vypově' or page["stav"] contains 'výpově' %} class="danger"{% endif %} role="row">
+        <td>{{page["datum podpisu"] }}</td>
+        <td><a href="{{ page.url }}">{{page["title"]}}</a></td>
+        <td>{% for smluvnik in page["smluvní strany"] offset:1 %} {% if forloop.index != 1 %}<br/>{% endif %} {{ smluvnik["jméno"] }} {% endfor %}</td>
+        <td>{{page["předmět"]}}</td>
+        <td>{{page["použité smluvní typy"] }}</td>
+        <td class="text-right">{{page["náklady"]}} Kč</td>
+        <td>{{page["stav"]}}</td>
+        <td>{{page["inventurizovano"]  | date: "%-d. %-m. %Y" }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+</div>
