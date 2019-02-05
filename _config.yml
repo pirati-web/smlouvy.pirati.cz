@@ -20,10 +20,10 @@ sass:
     style: compressed
 
 author:
-  - name:		'Jakub Michálek'
-    url:		https://www.pirati.cz/lide/jakub_michalek
-  - name:   'Ondřej Profant'
-    url:    https://www.pirati.cz/lide/ondrej_profant
+  - name: 'Jakub Michálek'
+    url: https://www.pirati.cz/lide/jakub_michalek
+  - name: 'Ondřej Profant'
+    url: https://www.pirati.cz/lide/ondrej_profant
 
 github:
   user: pirati-web
