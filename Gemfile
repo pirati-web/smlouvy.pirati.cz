@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "jekyll"
+gem "jekyll", "3.8.6"
 gem "jekyll-redirect-from"
 gem "jekyll-paginate"
 gem "jekyll-sitemap"
