@@ -241,24 +241,24 @@ var handleData = function(e, control) {
         if(values.subject != undefined){ text += '\n"předmět": "' + values.subject + '"'; }
         if(values.status != undefined){ text += '\n"stav": ' + values.status; }
         if(values.costs != undefined){ text += '\n"náklady": ' + values.costs; }
-        if(values.location != undefined){ text += '\n"místo uložení": ' + values.location; }
-        if(values.tender != undefined){ text += '\n"výběrko": ' + values.tender; }
+        if(values.location != undefined){ text += '\n"místo uložení": "' + values.location + '"'; } // v textu bývá dvojtečka z původního: ...uložení": '+ values.location; }
+        if(values.tender != undefined){ text += '\n"výběrko": "' + values.tender + '"'; } // http dvojtečka, viz ^^
 
 	text += '\n"smluvní strany":\n';
 	for(var i = 0; i < values.parties.length; i++) {
 		var party = values.parties[i];
 		text += " -\n";
                 if(party.name != undefined){ text += '  "jméno": "' + party.name + '"\n'; }
-                if(party.sidlo != undefined){ text += '  "sídlo": ' + party.sidlo + '\n'; }
-                if(party.bydliste != undefined){ text += '  "bydliště": ' + party.bydliste + '\n'; }
-                if(party.ico != undefined){ text += '  "IČ": ' + party.ico + '\n'; }
-                if(party.narozen != undefined){ text += '  "narozen": ' + party.narozen + '\n'; }
+                if(party.sidlo != undefined){ text += '  "sídlo": "' + party.sidlo + '"\n'; } //party.name až party.sign přidány "" z původního: "sidlo": ' + party.sidlo + '\n';
+                if(party.bydliste != undefined){ text += '  "bydliště": "' + party.bydliste + '"\n'; }
+                if(party.ico != undefined){ text += '  "IČ": "' + party.ico + '"\n'; }
+                if(party.narozen != undefined){ text += '  "narozen": "' + party.narozen + '"\n'; }
 
-                if(party.organization != undefined){ text += '  "orgán": ' + party.organization + '\n'; }
-                if(party.agent != undefined){ text += '  "zástupce": ' + party.agent + '\n'; }
-                if(party.func != undefined){ text += '  "funkce": ' + party.func + '\n'; }
-                if(party.role != undefined){ text += '  "role": ' + party.role + '\n'; }
-                if(party.sign != undefined){ text += '  "sign": ' + party.sign + '\n'; }
+                if(party.organization != undefined){ text += '  "orgán": "' + party.organization + '"\n'; }
+                if(party.agent != undefined){ text += '  "zástupce": "' + party.agent + '"\n'; }
+                if(party.func != undefined){ text += '  "funkce": "' + party.func + '"\n'; }
+                if(party.role != undefined){ text += '  "role": "' + party.role + '"\n'; }
+                if(party.sign != undefined){ text += '  "sign": "' + party.sign + '"\n'; }
 	}
         
         //  text se připojí až v následujícím volání
