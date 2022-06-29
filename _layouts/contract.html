@@ -41,8 +41,8 @@ layout: default
               <li>{% if smluvnik["role"] %}<strong>{{ smluvnik["role"] | capitalize }}</strong>: <br/ >{% endif %}
               {{ smluvnik["jméno"] }}{% if smluvnik["IČ"] %}, IČ {{ smluvnik["IČ"] }}{% elsif smluvnik["Ič"] %}, IČO {{ smluvnik["Ič"]  }}{% elsif smluvnik["IČO"] %}, IČO {{ smluvnik["IČO"]  }}{% elsif smluvnik["narozen"] %}, nar. {{ smluvnik["narozen"]  }}{% endif %}{% if smluvnik["orgán"] %}, {{ smluvnik["orgán"] }}{% endif %}
 
-      {% if smluvnik["bydliště"] %}<br/>
-      trvale bytem {{ smluvnik["bydliště"] }}
+      {% if smluvnik["bydliste"] %}<br/>
+      trvale bytem {{ smluvnik["bydliste"] }}
       {% elsif smluvnik["místo podnikání"] %}<br/>
       místo podnikání {{ smluvnik["místo podnikání"] }}
       {% elsif smluvnik["sídlo"] %}<br/>
