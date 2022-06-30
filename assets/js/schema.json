@@ -118,7 +118,7 @@
                         "type": "string"
                     },
                     "bydliste": {
-                        "title": "Obec bydliště",
+                        "title": "Bydliště",
                         "type": "string"
                     },
                     "ico": {
@@ -126,7 +126,7 @@
                         "type": "string"
                     },
                     "narozen": {
-                        "title": "Rok narození",
+                        "title": "Narozen",
                         "type": "string"
                     },
                     "organization": {
