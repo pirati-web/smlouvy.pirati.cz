@@ -106,7 +106,7 @@
                 "title": "smluvní strana",
                 "type": "object",
                 "minItems": 0,
-                "maxItems": 5,
+                "maxItems": 30,
                 "properties": {
                     "name": {
                         "title": "Jméno",
