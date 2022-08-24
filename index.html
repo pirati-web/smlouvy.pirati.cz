@@ -23,6 +23,7 @@ layout: default
             <th>Druh plnění</th>
             <th class="text-right">Odhad nákladů</th>
             <th>Stav</th>
+            <th>Stav dok.</th>
             <th>Invent.</th>
           </tr>
       </thead>
@@ -35,6 +36,7 @@ layout: default
               <th>Druh plnění</th>
               <th class="text-right">Odhad nákladů</th>
               <th>Stav</th>
+              <th>Stav dok.</th>
               <th>Invent.</th>
           </tr>
       </tfoot>
@@ -52,6 +54,7 @@ layout: default
         <td>{{page["použité smluvní typy"] }}</td>
         <td class="text-right">{{page["náklady"]}} Kč</td>
         <td>{{page["stav"]}}</td>
+        <td>{{page["stav dokumentu"]}}</td>
         <td>{{page["inventurizovano"]  | date: "%-d. %-m. %Y" }}</td>
       </tr>
       {% endfor %}
