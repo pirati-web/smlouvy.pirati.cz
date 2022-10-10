@@ -78,7 +78,7 @@ layout: default
       </tr>
       <tr>
         <th><i class="fa fa-inbox" aria-hidden="true"></i> Archivační údaje</th>
-        <td>spisová značka: {{page["smluvní strany"][0]["značka"] }}{% if page["místo uložení"] %}<br/ >smlouva uložena na místě: {{ page["místo uložení"] }} {% endif %}{% if page["inventurizovano"] %}<br/ >Smlouva byla inventarizována: {{ page["inventurizovano"]  | date: "%-d. %-m. %Y"  }} {% endif %}</td>
+        <td>spisová značka: {{page["smluvní strany"][0]["značka"] }}{% if page["stav dokumentu"] %}<br/ >stav dokumentu: {{ page["stav dokumentu"] }}{% if page["odeslano"] %} - datum odeslání do spisovny: {{ page["odeslano"] }}{% endif %}{% if page["ulozeno"] %} - datum uložení do spisovny: {{ page["ulozeno"] }}{% endif %}{% endif %}{% if page["místo uložení"] %}<br/ >smlouva uložena na místě: {{ page["místo uložení"] }} {% endif %}{% if page["inventurizovano"] %}<br/ >Smlouva byla inventarizována: {{ page["inventurizovano"]  | date: "%-d. %-m. %Y"  }} {% endif %}</td>
       </tr>
       <tr>
         <th><i class="fa fa-comment" aria-hidden="true"></i>Poznámka</th>
