@@ -28,6 +28,9 @@
                 "contract_type" : {
                     "placeholder" : "O jakou smlouvu se jedná (DPP, DPČ, ...)"
                 },
+		"send" : {
+                    "placeholder" : "Datum, kdy byl fyzický dokument odeslán do úložiště."
+                },
 		"name": {
 			"hideInitValidationError": true
 		},
