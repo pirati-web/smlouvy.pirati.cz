@@ -241,6 +241,7 @@ var handleData = function(e, control) {
         if(values.subject != undefined){ text += '\n"předmět": "' + values.subject + '"'; }
         if(values.status != undefined){ text += '\n"stav": ' + values.status; }
         if(values.costs != undefined){ text += '\n"náklady": ' + values.costs; }
+	if(values.send != undefined){ text += '\n"stav dokumentu": Odesláno\n "odeslano": ' + values.send; }
         if(values.location != undefined){ text += '\n"místo uložení": "' + values.location + '"'; } // v textu bývá dvojtečka z původního: ...uložení": '+ values.location; }
         if(values.tender != undefined){ text += '\n"výběrko": "' + values.tender + '"'; } // http dvojtečka, viz ^^
 
