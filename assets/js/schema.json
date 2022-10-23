@@ -73,7 +73,7 @@
         },
         "send": {
             "title": "Datum odeslání",
-            "type": "string"
+            "type": "string",
             "format": "date",
             "pattern": "^[0123]?[0-9].[0123]?[0-9].[0-9]{4}$"
         },
