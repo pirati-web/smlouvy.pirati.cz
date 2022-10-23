@@ -71,6 +71,12 @@
             "type": "string",
             "format": "uri"
         },
+        "send": {
+            "title": "Datum odeslání",
+            "type": "string"
+            "format": "date",
+            "pattern": "^[0123]?[0-9].[0123]?[0-9].[0-9]{4}$"
+        },
         "location": {
             "title": "Místo uložení",
             "type": "string"
