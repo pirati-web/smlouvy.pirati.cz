@@ -151,6 +151,10 @@
                         "description": "Funkce podepisující osoby v rámci právnické osoby",
                         "type": "string"
                     },
+                    "role": {
+                        "title": "Role",
+                        "type": "string"
+                    },
                     "sign": {
                         "title": "Značka",
                         "type": "string"
