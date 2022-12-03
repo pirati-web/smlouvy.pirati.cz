@@ -135,7 +135,7 @@
                     },
                     "narozen": {
                         "title": "Rok narození",
-                        "description": "Rok narození fyzické osoby"
+                        "description": "Rok narození fyzické osoby",
                         "type": "string"
                     },
                     "organization": {
@@ -149,10 +149,6 @@
                     "func": {
                         "title": "Funkce",
                         "description": "Funkce podepisující osoby v rámci právnické osoby",
-                        "type": "string"
-                    },
-                    "role": {
-                        "title": "Role",
                         "type": "string"
                     },
                     "sign": {
