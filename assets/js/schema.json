@@ -121,10 +121,12 @@
                     },
                     "sidlo": {
                         "title": "Sídlo",
+                        "description": "Adresa sídla právnické osoby",
                         "type": "string"
                     },
                     "bydliste": {
-                        "title": "Bydliště",
+                        "title": "Obec bydliště",
+                        "description": "Obec bydliště fyzické osoby",
                         "type": "string"
                     },
                     "ico": {
@@ -132,11 +134,12 @@
                         "type": "string"
                     },
                     "narozen": {
-                        "title": "Narozen",
+                        "title": "Rok narození",
+                        "description": "Rok narození fyzické osoby"
                         "type": "string"
                     },
                     "organization": {
-                        "title": "Organizace",
+                        "title": "Organizační složka právnické osoby",
                         "type": "string"
                     },
                     "agent": {
@@ -145,10 +148,7 @@
                     },
                     "func": {
                         "title": "Funkce",
-                        "type": "string"
-                    },
-                    "role": {
-                        "title": "Role",
+                        "description": "Funkce podepisující osoby v rámci právnické osoby",
                         "type": "string"
                     },
                     "sign": {
