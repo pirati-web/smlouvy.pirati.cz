@@ -121,10 +121,12 @@
                     },
                     "sidlo": {
                         "title": "Sídlo",
+                        "description": "Adresa sídla právnické osoby",
                         "type": "string"
                     },
                     "bydliste": {
-                        "title": "Bydliště",
+                        "title": "Obec bydliště",
+                        "description": "Obec bydliště fyzické osoby",
                         "type": "string"
                     },
                     "ico": {
@@ -132,7 +134,8 @@
                         "type": "string"
                     },
                     "narozen": {
-                        "title": "Narozen",
+                        "title": "Rok narození",
+                        "description": "Rok narození fyzické osoby"
                         "type": "string"
                     },
                     "organization": {
