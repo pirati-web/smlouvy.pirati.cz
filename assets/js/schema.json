@@ -139,7 +139,7 @@
                         "type": "string"
                     },
                     "organization": {
-                        "title": "Organizace",
+                        "title": "Organizační složka právnické osoby",
                         "type": "string"
                     },
                     "agent": {
@@ -148,10 +148,7 @@
                     },
                     "func": {
                         "title": "Funkce",
-                        "type": "string"
-                    },
-                    "role": {
-                        "title": "Role",
+                        "description": "Funkce podepisující osoby v rámci právnické osoby",
                         "type": "string"
                     },
                     "sign": {
