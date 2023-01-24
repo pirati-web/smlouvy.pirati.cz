@@ -72,7 +72,7 @@
             "format": "uri"
         },
         "send": {
-            "title": "Datum odeslání",
+            "title": "Datum odeslání (dd.mm.RRRR)",
             "type": "string",
             "format": "date",
             "pattern": "^[0123]?[0-9].[0123]?[0-9].[0-9]{4}$"
@@ -91,7 +91,8 @@
         },
         "docs": {
             "title": "Podepsaná verze (naskenované PDF)",
-            "type": "docs"
+            "type": "docs",
+            "required": true
         },
         "docs2": {
             "title": "Strojově čitelná verze (PDF z editovatelného dokumentu)",
