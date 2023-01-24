@@ -91,8 +91,7 @@
         },
         "docs": {
             "title": "Podepsaná verze (naskenované PDF)",
-            "type": "docs",
-            "required": true
+            "type": "docs"
         },
         "docs2": {
             "title": "Strojově čitelná verze (PDF z editovatelného dokumentu)",
