@@ -17,7 +17,7 @@
                     "placeholder" : "Předmět smlouvy. Z předmětu by mělo být jasné o čem daná smlouva je."
                 },
                 "contract_end" : {
-                    "placeholder" : "Datum, do kdy by měl být kontrakt ukončen."
+                    "placeholder" : "Datum, do kdy by měl být kontrakt ukončen. Pokud je na dobu neurčitou, nevyplňujte nic."
                 },
                 "sign" : {
                     "placeholder" : "Datum, kdy byl dokument oboustranně podepsán (tvoří cestu ke složce)."
