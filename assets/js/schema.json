@@ -121,12 +121,12 @@
                         "required": true
                     },
                     "sidlo": {
-                        "title": "Sídlo",
+                        "title": "Sídlo (Jen právnické osoby)",
                         "description": "Adresa sídla právnické osoby",
                         "type": "string"
                     },
                     "bydliste": {
-                        "title": "Obec bydliště",
+                        "title": "Obec bydliště (Jen fyzické osoby)",
                         "description": "Obec bydliště fyzické osoby",
                         "type": "string"
                     },
@@ -135,7 +135,7 @@
                         "type": "string"
                     },
                     "narozen": {
-                        "title": "Rok narození",
+                        "title": "Rok narození (Jen fyzické osoby)",
                         "description": "Rok narození fyzické osoby",
                         "type": "string"
                     },
@@ -148,7 +148,7 @@
                         "type": "string"
                     },
                     "func": {
-                        "title": "Funkce",
+                        "title": "Funkce zástupce",
                         "description": "Funkce podepisující osoby v rámci právnické osoby",
                         "type": "string"
                     },
