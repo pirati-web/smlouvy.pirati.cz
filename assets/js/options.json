@@ -23,7 +23,7 @@
                     "placeholder" : "Datum, kdy byl dokument oboustranně podepsán (tvoří cestu ke složce)."
                 },
                 "effective" : {
-                    "placeholder" : "Datum, kdy začíná účinnost dokumentu."
+                    "placeholder" : "Datum, kdy začíná účinnost dokumentu; Pokud není ve smlouvě uvedeno, jedná se o datum podpisu."
                 },
                 "contract_type" : {
                     "placeholder" : "O jakou smlouvu se jedná (DPP, DPČ, ...)"
